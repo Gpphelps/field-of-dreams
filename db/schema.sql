@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS fieldofDreamsDb;
+CREATE DATABASE fieldofDreamsDb;
