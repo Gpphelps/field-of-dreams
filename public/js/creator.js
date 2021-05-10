@@ -213,5 +213,23 @@ inputs.forEach(input => {
 })
 
 
+const submitFlower = async () => {
+    let attributeObject = attrConstructor()
+    let statusP = document.querySelector('#saveStatus')
+
+    statusP.innerHTML = 'Saving Flower...'
+    //NEED TO PUT IN THE ACTUAL ROUTE
+    const response = await fetch('/api/', {
+        method: 'POST',
+        body: JSON.stringify(attributeObject),
+        headers: { 'Content-Type': 'application/json' },
+    });
+    if (response.ok){
+        statusP.innerHTML = 'Flower succesfully'
+    }
+
+    
+}
 
 
+document.querySelector('#saveButton').addEventListener('mousedown',submitFlower)
