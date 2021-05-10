@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Flower extends Model {}
+class Flower extends Model { }
 
 Flower.init(
     {
@@ -22,8 +22,8 @@ Flower.init(
             allowNull: false,
         },
         max_curve: {
-           type: DataTypes.INTEGER,
-           allowNull: true,
+            type: DataTypes.INTEGER,
+            allowNull: true,
         },
         max_variation: {
             type: DataTypes.INTEGER,
@@ -43,7 +43,7 @@ Flower.init(
         },
         bulb_color_B: {
             type: DataTypes.INTEGER,
-            allowNull: false, 
+            allowNull: false,
         },
         petal_color_variation: {
             type: DataTypes.INTEGER,
@@ -65,16 +65,18 @@ Flower.init(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        petal_shape: {
-            type: DataTypes.Sequelize.json,
-
-        },
+        petal_shape: 
+             DataTypes.ARRAY(DataTypes.INTEGER),
+        
+    },
+    {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'flower',
     }
+
 )
 
 module.exports = Flower;

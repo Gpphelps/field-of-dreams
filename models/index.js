@@ -1,13 +1,23 @@
 const User = require('./User');
 const Flower = require('./Flower');
+const Field = require('./Field')
 
 User.hasMany(Flower, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
 });
 
-Flower.belongsTo(User, {
+Field.hasMany(User, {
     foreignKey: 'user_id'
 });
 
-module.exports = { User, Flower };
+
+Flower.belongsTo(User, {
+    foreignKey: 'flower_id'
+});
+
+Flower.belongsTo(Field, {
+    foreignKey: 'flower_id'
+})
+
+module.exports = { User, Flower, Field };
