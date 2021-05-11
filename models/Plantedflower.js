@@ -20,7 +20,7 @@ Plantedflower.init(
               model: 'flower',
               key: 'id',
             },
-          },
+        }
     },
     {
         sequelize,
