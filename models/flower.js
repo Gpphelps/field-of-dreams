@@ -45,6 +45,30 @@ Flower.init(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        petal_color_R: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        petal_color_G: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        petal_color_B: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        stem_color_R: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        stem_color_G: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        stem_color_B: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         petal_color_variation: {
             type: DataTypes.INTEGER,
             allowNull: true,
@@ -68,6 +92,10 @@ Flower.init(
         petal_shape: {
             type: DataTypes.ARRAY(DataTypes.INTEGER),
         },
+        petal_scale_variation: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        }
         user_id: {
             type: DataTypes.INTEGER,
             references: {
