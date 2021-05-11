@@ -95,7 +95,7 @@ Flower.init(
         petal_scale_variation: {
             type: DataTypes.INTEGER,
             allowNull: false,
-        }
+        },
         user_id: {
             type: DataTypes.INTEGER,
             references: {
