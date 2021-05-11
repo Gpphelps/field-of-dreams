@@ -65,9 +65,16 @@ Flower.init(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        petal_shape: 
-             DataTypes.ARRAY(DataTypes.INTEGER),
-        
+        petal_shape: {
+            type: DataTypes.ARRAY(DataTypes.INTEGER),
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+              model: 'user',
+              key: 'id',
+            },
+          },
     },
     {
         sequelize,
