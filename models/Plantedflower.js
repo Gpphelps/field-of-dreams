@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Field extends Model {}
+class Plantedflower extends Model {}
 
-Field.init(
+Plantedflower.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -11,20 +11,24 @@ Field.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        num_flowers: {
-            type: DataTypes.INTEGER
-        },
         flower_position: {
            type: DataTypes.ARRAY(DataTypes.INTEGER),
-        }
+        },
+        flower_id: {
+            type: DataTypes.INTEGER,
+            references: {
+              model: 'flower',
+              key: 'id',
+            },
+          },
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'field',
+        modelName: 'plantedflower',
     }
 )
 
-module.exports = Field;
+module.exports = Plantedflower;
