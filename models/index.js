@@ -1,13 +1,11 @@
 const User = require('./User');
 const Flower = require('./Flower');
 const Plantedflower = require('./Plantedflower');
-const Plantedflower = require('./Plantedflower');
 
 User.hasMany(Flower, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
 });
-
 
 Flower.hasMany(Plantedflower, {
     foreignKey: 'flower_id'
