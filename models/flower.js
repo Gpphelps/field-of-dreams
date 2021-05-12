@@ -11,6 +11,10 @@ Flower.init(
             primaryKey: true,
             autoIncrement: true,
         },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         height: {
             type: DataTypes.INTEGER,
             allowNull: false,
