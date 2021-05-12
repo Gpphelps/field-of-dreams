@@ -25,7 +25,7 @@ router.post('/', async(req, res) => {
             segment_variation: req.body.segment_variation,
             petal_number: req.body.petal_number,
             petal_scale: req.body.petal_scale,
-            petal_shape: req.body.petal_shape,
+            petal_shape: req.body.petalS_shape,
             petal_scale_variation: req.body.petal_scale_variation,
         });
 
