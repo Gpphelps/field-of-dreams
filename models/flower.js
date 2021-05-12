@@ -90,7 +90,7 @@ Flower.init(
             allowNull: false,
         },
         petal_shape: {
-            type: DataTypes.ARRAY(DataTypes.INTEGER),
+            type: DataTypes.STRING,
         },
         petal_scale_variation: {
             type: DataTypes.INTEGER,

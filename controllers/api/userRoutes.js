@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { runInNewContext } = require('vm');
+// const { runInNewContext } = require('vm');
 const {User} = require('../../models');
 
 //Create new user
