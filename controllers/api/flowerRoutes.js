@@ -47,5 +47,22 @@ router.get('/:id', (req, res) => {
     }
 });
 
+router.delete('/:id', (req, res) => {
+    try {
+        const newFlower = await Flower.findAll({
+            where: {
+                id: req.params.id,
+            }
+        });
+        if (!newFlower) {
+            res.status(404).json({ message: 'No flower found with this id!' });
+            return;
+        }
+        res.status(200).json(newFlower);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
 
 module.exports = router;

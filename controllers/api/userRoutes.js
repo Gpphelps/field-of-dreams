@@ -71,7 +71,24 @@ router.post('/logout', (req, res) => {
 //get route, include model flower
 router.get('/:id', (req, res) => {
     try {
-        const userDataDB = await User.
+        const userDataDB = await User.findAll({
+            where: {
+                id: req.params.id,
+            }, 
+        }, 
+        {include: [{
+            model: Flower,
+        }]
+        }, 
+        );
+
+        if (!userDataDB) {
+            res.status(404).json({ message: 'No user found with this id!'});
+            return;
+        }
+        res.status(200).json(userDataDB);
+    } catch (err) {
+        res.status(500).json(err);
     }
 })
 
