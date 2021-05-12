@@ -4,7 +4,6 @@ const Plantedflower = require('./Plantedflower');
 
 User.hasMany(Flower, {
     foreignKey: 'user_id',
-    onDelete: 'CASCADE'
 });
 
 Flower.hasMany(Plantedflower, {
@@ -12,11 +11,13 @@ Flower.hasMany(Plantedflower, {
 });
 
 Flower.belongsTo(User, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
 });
 
 Plantedflower.belongsTo(Flower, {
-    foreignKey: 'flower_id'
+    foreignKey: 'flower_id',
+    onDelete: 'CASCADE'
 })
 
 module.exports = { User, Flower, Plantedflower };
