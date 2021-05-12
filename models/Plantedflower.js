@@ -11,16 +11,16 @@ Plantedflower.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        flower_position: {
-           type: DataTypes.ARRAY(DataTypes.INTEGER),
-        },
+        flower_position: 
+           DataTypes.STRING,
+        
         flower_id: {
             type: DataTypes.INTEGER,
             references: {
               model: 'flower',
               key: 'id',
             },
-          },
+        }
     },
     {
         sequelize,
