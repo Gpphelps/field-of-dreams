@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { runInNewContext } = require('vm');
-const {User} = require('../../models');
+const {User, Flower} = require('../../models');
 
 //Create new user
 router.post('/', async(req, res) => {
@@ -29,7 +28,6 @@ router.post('/login', async(req, res) => {
                 email: req.body.email,
             },
         });
-
         if (!userDataDB) {
             res
                 .status(400)
@@ -69,5 +67,12 @@ router.post('/logout', (req, res) => {
         res.status(404).end();
       }
 });
+
+//get route, include model flower
+router.get('/:id', (req, res) => {
+    try {
+        const userDataDB = await User.
+    }
+})
 
 module.exports = router;
