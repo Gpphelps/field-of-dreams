@@ -1,12 +1,13 @@
 
 
+
 class Canvas{
-    constructor(elem,w,h){
+    constructor(elem,w,h,bkg){
         this.canv = elem;
         this.ctx = null;
         this.w = w;
         this.h = h;
-        this.bkg = 'rgb(0,150,60)'
+        this.bkg = bkg
     }
 
     init(){

@@ -30,7 +30,7 @@ let testAttributes = {
 }
 
 
-let canvas = new Canvas(document.querySelector('#canv0'),400,400)
+let canvas = new Canvas(document.querySelector('#canv0'),400,400, 'black')
 canvas.init()
 
 
@@ -187,6 +187,8 @@ const attrConstructor = () => {
     console.log(attributes.petalScale)
     generateFlower(attributes)
 
+    return attributes
+
 }
 
 attrConstructor()
@@ -206,22 +208,81 @@ const resetCanv = () => {
 
 let inputs = document.querySelectorAll('.paramInput')
 inputs.forEach(input => {
-    input.addEventListener('change',function(){
+    input.previousElementSibling.innerHTML = input.value
+    input.previousElementSibling.style.color = 'rgb(255,0,200)'
+    input.previousElementSibling.style.fontStyle = 'italic'
+
+    input.addEventListener('mouseup',function(e){
         resetCanv()
         attrConstructor()
+
+        e.target.previousElementSibling.innerHTML = e.target.value
+    })
+})
+
+let rgbInputs = document.querySelectorAll('.rgbInput')
+rgbInputs.forEach(input => {
+
+    document.querySelectorAll('.rgbColorDisplay').forEach(display => {
+        // console.log(display.dataset.type)
+        // console.log(input.dataset.type)
+        
+        if(display.dataset.type == input.dataset.type){
+            let colors = document.querySelectorAll('.'+input.dataset.type+'Slider')
+            // console.log(colors[0].value)
+            display.style.backgroundColor = `rgb(${colors[0].value},${colors[1].value},${colors[2].value})`
+        }
+    })
+
+    input.addEventListener('mouseup',function(e){
+        document.querySelectorAll('.rgbColorDisplay').forEach(display => {
+            // console.log(display.dataset.type)
+            // console.log(input.dataset.type)
+            
+            if(display.dataset.type == input.dataset.type){
+                let colors = document.querySelectorAll('.'+input.dataset.type+'Slider')
+                // console.log(colors[0].value)
+                display.style.backgroundColor = `rgb(${colors[0].value},${colors[1].value},${colors[2].value})`
+            }
+        })
     })
 })
 
 
+
+
 const submitFlower = async () => {
-    let attributeObject = attrConstructor()
-    let statusP = document.querySelector('#saveStatus')
+    let attrObj = attrConstructor()
+    let statusP = document.querySelector('#saveStatus');
+
+    let attributeDBFormat = {
+        max_curve: attrObj.maxCurve,
+        max_variation: attrObj.maxVariation,
+        stem_width: attrObj.stemWidth,
+        bulb_radius: attrObj.bulbRadius,
+        bulb_color_R: attrObj.bulbColor.r,
+        bulb_color_G: attrObj.bulbColor.g,
+        bulb_color_B: attrObj.bulbColor.b,
+        petal_color_R: attrObj.petalColor.r,
+        petal_color_G: attrObj.petalColor.g,
+        petal_color_B: attrObj.petalColor.b,
+        stem_color_R: attrObj.stemColor.r,
+        stem_color_G: attrObj.stemColor.g,
+        stem_color_B: attrObj.stemColor.b,
+        petal_color_variation: attrObj.petalColorVariation,
+        segments: attrObj.segments,
+        segment_variation: attrObj.segmentVaraiation,
+        petal_number: attrObj.petalColor,
+        petal_shape: attrObj.petalShape,
+        petal_scale: attrObj.petalScale,
+        petal_scale_variation: attrObj.petalScaleVariation,
+    }
 
     statusP.innerHTML = 'Saving Flower...'
     //NEED TO PUT IN THE ACTUAL ROUTE
     const response = await fetch('/api/', {
         method: 'POST',
-        body: JSON.stringify(attributeObject),
+        body: JSON.stringify(attributeDBFormat),
         headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok){
@@ -233,3 +294,4 @@ const submitFlower = async () => {
 
 
 document.querySelector('#saveButton').addEventListener('mousedown',submitFlower)
+

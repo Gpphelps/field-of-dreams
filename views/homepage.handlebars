@@ -1,21 +1,5 @@
-<!-- Loop over each object in the projects array -->
-{{#each flowers as  }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      {{{get_emoji}}}
-      <a href="/model/{{flower.id}}">{{project.name}}</a>
-    </h2>
-    <p>
-      WElCOME TO THE FLOWER FIELD 
-    </p>
-    <p></p>
-  </div>
-  <div class="col-md-7">
-    <p>
-      these are the flowers
-    </p>
-  </div>
-</div>
-{{/each}}
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.3.0/math.js"></script>
+<script src="flowerEngine.js"></script>
+<script src="field.js"></script>
