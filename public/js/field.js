@@ -1,3 +1,4 @@
+const { response } = require("express")
 
 let canvas = new Canvas(document.querySelector('#mainField'),window.innerWidth,window.innerHeight-(document.querySelector('header').offsetHeight),'green')
 canvas.init()
@@ -15,6 +16,7 @@ const getFlowers = () => {
         drawFlowers(data)
     })
 }
+
 
 
 // let testArray = [
@@ -75,8 +77,9 @@ const getFlowers = () => {
 
 const drawFlowers = (flowers) => {
     flowers.forEach(flower => {
-        let flowerX = flower.flower_position[0]
-        let flowerY = flower.flower_position[1]
+        let pos = JSON.parse(flower.flower_position)
+        let flowerX = pos[0]
+        let flowerY = pos[1]
         let f = flower.flower
 
         let attr = {
@@ -119,6 +122,7 @@ const drawFlowers = (flowers) => {
 
 
 let selectedAttr = {
+    id: 1,
     maxCurve: 0.1,
     maxVariation: 0.05,
     stemWidth: 0.2,
@@ -154,7 +158,23 @@ const plantNewFlower = (e) => {
     newFlower.init()
     newFlower.draw()
 
+    let plantedFlowerModelCompatible = {
+        flower_position = [e.clientX,e.clientY],
+        flower_id = selectedAttr.id
+    }
 
+    fetch('/api/planted', {
+        method: 'POST',
+        body: JSON.stringify(plantedFlowerModelCompatible),
+        headers: {
+            'Content-Type': 'application/json', 
+        }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        console.log('STATUS:' + response.status)
+        console.log(data)
+    })
 }
 
 canvas.canv.addEventListener('mousedown',plantNewFlower)
@@ -193,6 +213,7 @@ const selectFlower = (e) => {
     .then((response) => response.json())
     .then((data) => {
         selectedAttr = {
+            id: data.id,
             maxCurve: data.max_curve,
             maxVariation: data.max_variation,
             stemWidth: data.stem_width,
@@ -216,7 +237,7 @@ const selectFlower = (e) => {
             segments: data.segments,
             segmentVaraiation: data.segment_variation,
             petalNum: data.petal_number,
-            petalShape: data.petal_shape,
+            petalShape: JSON.parse(data.petal_shape),
             petalScale: data.petal_scale,
             petalScaleVariation: data.petal_scale_variation,
         }
@@ -226,6 +247,18 @@ const selectFlower = (e) => {
 
 
 const displayUserFlowers = (flowers) => {
+    if(flowers.length == 0){
+        let div = document.querySelector('#flowerCanvDiv');
+        let msgCont = document.createElement('div');
+        msgCont.classList.add('noFlowersDiv');
+        
+        let msg = document.createElement('p');
+        
+        div.appendChild(msgCont)
+        msgCont.appendChild(msg)
+
+        msg.innerHTML = "You don't have any flowers yet."
+    }
     flowers.forEach(flower => {
         let div = document.querySelector('#flowerCanvDiv')
         let canv = document.createElement('canvas')
@@ -410,3 +443,7 @@ document.querySelector('#userFlowersExpand').addEventListener('mousedown',functi
 
 })
 
+
+
+getFlowers()
+myFlowersInit()
