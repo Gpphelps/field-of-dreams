@@ -2,7 +2,7 @@ const router = require('express').Router();
 const {Flower} = require('../../models');
 
 //Create new flower
-router.post('/', async(req, res) => {
+router.post('/', async (req, res) => {
     try {
         const newFlower = await Flower.create({
             name: req.body.name,
@@ -38,7 +38,7 @@ router.post('/', async(req, res) => {
 });
 
 //Get flower by id
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const newFlower = await Flower.findAll({
             where: {
@@ -55,7 +55,7 @@ router.get('/:id', (req, res) => {
     }
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const newFlower = await Flower.findAll({
             where: {

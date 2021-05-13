@@ -2,7 +2,7 @@ const router = require('express').Router();
 const {User, Flower} = require('../../models');
 
 //Create new user
-router.post('/', async(req, res) => {
+router.post('/', async (req, res) => {
     try {
         const userDataDB = await User.create({
             username: req.body.username,
@@ -21,7 +21,7 @@ router.post('/', async(req, res) => {
 });
 
 //User Login
-router.post('/login', async(req, res) => {
+router.post('/login', async (req, res) => {
     try {
         const userDataDB = await User.findOne({
             where: {
@@ -69,7 +69,7 @@ router.post('/logout', (req, res) => {
 });
 
 //get route, include model flower
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const userDataDB = await User.findAll({
             where: {
