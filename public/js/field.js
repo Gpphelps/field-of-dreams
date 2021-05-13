@@ -4,7 +4,7 @@ canvas.init()
 
 const getFlowers = () => {
     //NEED TO PUT IN THE ACTUAL ROUTE
-    fetch('/api/planted/', {
+    fetch('/api/plantedRoutes/', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json', 
@@ -162,7 +162,7 @@ const plantNewFlower = (e) => {
         flower_id: selectedAttr.id
     }
 
-    fetch('/api/planted', {
+    fetch('/api/plantedRoutes', {
         method: 'POST',
         body: JSON.stringify(plantedFlowerModelCompatible),
         headers: {
