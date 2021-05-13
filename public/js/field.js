@@ -162,7 +162,7 @@ const plantNewFlower = (e) => {
         flower_id: selectedAttr.id
     }
 
-    fetch('/api/planted', {
+    fetch('/api/plantedRoutes', {
         method: 'POST',
         body: JSON.stringify(plantedFlowerModelCompatible),
         headers: {
