@@ -399,6 +399,7 @@ body {
     color: yellow;
     font-family: Helvetica;
     font-size: 32px;
+    /* font-weight: normal; */
 }
 
 
@@ -407,13 +408,16 @@ body {
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
-    padding: 20px 40px 20px 40px;
-    border: 2px yellow solid;
+    padding: 10px 20px 10px 20px;
+    border: 1px yellow solid;
     border-radius: 15px;
     width: 100%;
     color: yellow;
 }
 
+.profileFlowerDiv > h3 {
+    font-weight: 100;
+}
 .profileFlowerDiv > canvas {
     border-radius: 15px;
 }
@@ -422,8 +426,17 @@ body {
     justify-self: flex-end;
     padding: 10px;
     border-radius: 15px;
+    background-color: rgb(22,16,22);
+    border: 1px solid tomato;
+    color: tomato
+
+
+}
+
+.profileFlowerDiv > button:hover {
     background-color: tomato;
-    border: none
+    border: 1px solid rgb(22,16,22);
+    color: rgb(22,16,22);
 }
 
 
@@ -486,5 +499,56 @@ body {
 
 
 
+/* LOGIN STUFF */
 
+#loginPageCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: yellow;
+    flex-wrap: wrap;
+    height: 100vh;
+}
 
+.formDiv {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid yellow;
+}
+
+.userForm {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.userForm > label {
+    margin-top: 5px;
+}
+
+.userForm > input {
+    border: 2px solid yellow;
+    border-radius: 15px;
+    background-color: rgb(22,16,22);
+    color:rgb(255, 0, 200);
+    padding: 5px 15px 5px 15px
+}
+
+.userForm > button {
+    margin: 5px;
+    padding: 5px;
+    margin-top: 15px;
+    background-color: rgb(22,16,22);
+    border: 2px solid rgb(255, 0, 200);
+    color: rgb(255, 0, 200);
+    border-radius: 15px;
+}
+
+.userForm > button:hover {
+    background-color: rgb(255, 0, 200);
+    border: 2px solid rgb(22,16,22);
+    color: rgb(22,16,22);
+}

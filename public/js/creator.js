@@ -180,7 +180,7 @@ const attrConstructor = () => {
         // segments: 4,
         segmentVaraiation: Number(segmentVaraiation),
         petalNum: Number(petalNum),
-        petalShape: petalShape,
+        petalShape: JSON.stringify(petalShape),
         petalScale: Number(petalScale),
         petalScaleVariation: Number(petalScaleVariation),
     }
@@ -280,7 +280,7 @@ const submitFlower = async () => {
 
     statusP.innerHTML = 'Saving Flower...'
     //NEED TO PUT IN THE ACTUAL ROUTE
-    const response = await fetch('/api/', {
+    const response = await fetch('/api/flowers', {
         method: 'POST',
         body: JSON.stringify(attributeDBFormat),
         headers: { 'Content-Type': 'application/json' },
