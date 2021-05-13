@@ -21,7 +21,7 @@ const renderProfileFlowers = (flowers) => {
 
 
         let canv = document.createElement('canvas')
-        let canvas = new Canvas(canv,100,100,'rgb(170,170,170)')
+        let canvas = new Canvas(canv,75,75,'rgb(170,170,170)')
         canvas.init()
 
         div.appendChild(canv)
@@ -52,12 +52,12 @@ const renderProfileFlowers = (flowers) => {
             segments: f.segments,
             segmentVaraiation: f.segment_variation,
             petalNum: f.petal_number,
-            petalShape: f.petal_shape,
+            petalShape: JSON.parse(f.petal_shape),
             petalScale: f.petal_scale,
             petalScaleVariation: f.petal_scale_variation,
         }
 
-        let newFlower = new Flower(attr,15,canvas.w/2,canvas.h*.9,canvas.ctx)
+        let newFlower = new Flower(attr,10,canvas.w/2,canvas.h*.9,canvas.ctx)
         newFlower.init()
         newFlower.draw()
 
@@ -95,7 +95,7 @@ renderProfileFlowers([{
     segments: 5,
     segment_variation: 0,
     petal_number: 10,
-    petal_shape: [[0,0],[2,1],[3,0],[2,-1]],
+    petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
     petal_scale: 0.3,
     petal_scale_variation: 0.05,
     id:1,
@@ -118,7 +118,7 @@ renderProfileFlowers([{
     segments: 5,
     segment_variation: 0,
     petal_number: 10,
-    petal_shape: [[0,0],[2,1],[3,0],[2,-1]],
+    petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
     petal_scale: 0.3,
     petal_scale_variation: 0.05,
     id:2,
