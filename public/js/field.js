@@ -159,8 +159,8 @@ const plantNewFlower = (e) => {
     newFlower.draw()
 
     let plantedFlowerModelCompatible = {
-        flower_position = [e.clientX,e.clientY],
-        flower_id = selectedAttr.id
+        flower_position: [e.clientX,e.clientY],
+        flower_id: selectedAttr.id
     }
 
     fetch('/api/planted', {
