@@ -155,13 +155,13 @@ const plantNewFlower = (e) => {
 
     let canvRect = canvas.canv.getBoundingClientRect()
     let placeX = e.clientX + canvRect.left;
-    let placeY = e.clientY + canvRect.top;
+    let placeY = e.clientY - canvRect.top;
     let newFlower = new Flower(selectedAttr,20,placeX,placeY,canvas.ctx)
     newFlower.init()
     newFlower.draw()
 
     let plantedFlowerModelCompatible = {
-        flower_position: [e.clientX,e.clientY],
+        flower_position: [placeX,placeY],
         flower_id: selectedAttr.id
     }
 
