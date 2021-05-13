@@ -1,4 +1,3 @@
-const { response } = require("express")
 
 let canvas = new Canvas(document.querySelector('#mainField'),window.innerWidth,window.innerHeight-(document.querySelector('header').offsetHeight),'green')
 canvas.init()
