@@ -1,6 +1,6 @@
-const User = require('./User');
-const Flower = require('./Flower');
-const Plantedflower = require('./Plantedflower');
+const User = require('./User.js');
+const Flower = require('./Flower.js');
+const Plantedflower = require('./Plantedflower.js');
 
 User.hasMany(Flower, {
     foreignKey: 'user_id',
