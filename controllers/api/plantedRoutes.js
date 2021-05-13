@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
         res.status(200).json(allPlantedFlowers)
     }
     catch (err){
-        res.status(500).json(err);
+        res.status(500).json(err); 
     }
 })
 
