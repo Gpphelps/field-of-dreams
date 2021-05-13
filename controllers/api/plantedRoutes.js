@@ -16,7 +16,22 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
+    try {
+        const allPlantedFlowersDB = await Plantedflower.findAll({
+            include: [
+                {
+                    model: Flower,
+                },
+            ],
+        });
 
+        const allPlantedFlowers = allPlantedFlowersDB.map((flower) => flower.get({ plain: true }))
+        
+        res.status(200).json(allPlantedFlowers)
+    }
+    catch (err){
+        res.status(500).json(err);
+    }
 })
 
 router.get('/:id', async (req, res) => {
