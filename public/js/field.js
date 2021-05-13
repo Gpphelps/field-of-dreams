@@ -153,7 +153,10 @@ let selectedAttr = {
 const plantNewFlower = (e) => {
     console.log(e.clientX);
 
-    let newFlower = new Flower(selectedAttr,20,e.clientX,e.clientY,canvas.ctx)
+    let canvRect = canvas.canv.getBoundingClientRect()
+    let placeX = e.clientX + canvRect.left;
+    let placeY = e.clientY + canvRect.top;
+    let newFlower = new Flower(selectedAttr,20,placeX,placeY,canvas.ctx)
     newFlower.init()
     newFlower.draw()
 
