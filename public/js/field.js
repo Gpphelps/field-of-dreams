@@ -247,6 +247,18 @@ const selectFlower = (e) => {
 
 
 const displayUserFlowers = (flowers) => {
+    if(flowers.length == 0){
+        let div = document.querySelector('#flowerCanvDiv');
+        let msgCont = document.createElement('div');
+        msgCont.classList.add('noFlowersDiv');
+        
+        let msg = document.createElement('p');
+        
+        div.appendChild(msgCont)
+        msgCont.appendChild(msg)
+
+        msg.innerHTML = "You don't have any flowers yet."
+    }
     flowers.forEach(flower => {
         let div = document.querySelector('#flowerCanvDiv')
         let canv = document.createElement('canvas')
