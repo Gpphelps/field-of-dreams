@@ -154,10 +154,11 @@ const attrConstructor = () => {
     const petalScale = document.querySelector('#petalScale').value
     const petalScaleVariation = document.querySelector('#petalScaleVariation').value
 
-
+    const name = document.querySelector('#flowerName').value
     console.log(stemSegments)
 
     let attributes = {
+        name: name,
         maxCurve: Number(maxCurve),
         maxVariation: Number(maxVariation),
         stemWidth: Number(stemWidth),
@@ -275,7 +276,7 @@ const submitFlower = async () => {
         segments: attrObj.segments,
         segment_variation: attrObj.segmentVaraiation,
         petal_number: attrObj.petalColor,
-        petal_shape: attrObj.petalShape,
+        petal_shape: JSON.stringify(attrObj.petalShape),
         petal_scale: attrObj.petalScale,
         petal_scale_variation: attrObj.petalScaleVariation,
     }
