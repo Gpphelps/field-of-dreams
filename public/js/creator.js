@@ -259,6 +259,7 @@ const submitFlower = async () => {
     let statusP = document.querySelector('#saveStatus');
 
     let attributeDBFormat = {
+        name: attrObj.name,
         max_curve: attrObj.maxCurve,
         max_variation: attrObj.maxVariation,
         stem_width: attrObj.stemWidth,
