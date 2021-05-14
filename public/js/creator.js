@@ -182,7 +182,7 @@ const attrConstructor = () => {
         // segments: 4,
         segmentVaraiation: Number(segmentVaraiation),
         petalNum: Number(petalNum),
-        petalShape: JSON.stringify(petalShape),
+        petalShape: petalShape,
         petalScale: Number(petalScale),
         petalScaleVariation: Number(petalScaleVariation),
     }
