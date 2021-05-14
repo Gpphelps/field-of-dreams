@@ -43,7 +43,10 @@ router.get('/profile', withAuth, async (req, res) => {
 
 router.get('/create', async (req, res) => {
     try {
-        res.render('create');
+        res.render('create', {
+            logged_in: req.session.loggedIn,
+            user_id: req.session.user_id
+        });
     } catch (err) {
         res.status(500).json(err);
     }
