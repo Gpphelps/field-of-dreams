@@ -255,8 +255,8 @@ rgbInputs.forEach(input => {
 
 
 const submitFlower = async () => {
-    let attrObj = attrConstructor()
     resetCanv()
+    let attrObj = attrConstructor()
     let statusP = document.querySelector('#saveStatus');
 
     let attributeDBFormat = {

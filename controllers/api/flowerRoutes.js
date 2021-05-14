@@ -27,6 +27,7 @@ router.post('/', async (req, res) => {
             petal_scale: req.body.petal_scale,
             petal_shape: req.body.petalS_shape,
             petal_scale_variation: req.body.petal_scale_variation,
+            user_id: req.body.user_id
         });
 
         res.status(200).json(newFlower);
