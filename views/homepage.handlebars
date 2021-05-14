@@ -7,6 +7,11 @@
         <div id='flowerCanvDiv'></div>
     </div>
     {{/if}}
+    {{#if logged_in}}
+    <p id='login-proxy' style='display:none'>true</p>
+    {{else}}
+    <p id='login-proxy' style='display:none'>false</p>
+    {{/if}}
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.3.0/math.js"></script>

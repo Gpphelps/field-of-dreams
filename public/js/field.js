@@ -18,6 +18,7 @@ const getFlowers = () => {
 
 
 let loggedIn;
+console.log(document.querySelector('#login-proxy'))
 let proxyText = document.querySelector('#login-proxy').textContent
 if(proxyText == 'true'){
     loggedIn = true
