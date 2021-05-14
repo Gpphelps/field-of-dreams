@@ -6,7 +6,6 @@ router.post('/', async (req, res) => {
        const newPlant =  await Plantedflower.create({
            flower_position: req.body.flower_position,
            flower_id: req.body.flower_id,
-
        })
        res.status(200).json(newPlant);
     } catch (err) {

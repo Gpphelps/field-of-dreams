@@ -162,7 +162,7 @@ const plantNewFlower = (e) => {
         newFlower.draw()
     
         let plantedFlowerModelCompatible = {
-            flower_position: [placeX,placeY],
+            flower_position: JSON.stringify([placeX,placeY]),
             flower_id: selectedAttr.id
         }
     
