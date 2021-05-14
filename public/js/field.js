@@ -162,7 +162,7 @@ let selectedAttr = {
 }
 
 const plantNewFlower = (e) => {
-    if(logged_in){
+    if(loggedIn){
         console.log(e.clientX);
 
         let canvRect = canvas.canv.getBoundingClientRect()
@@ -198,7 +198,7 @@ canvas.canv.addEventListener('mousedown',plantNewFlower)
 
 
 const myFlowersInit = () => {
-    if(logged_in){
+    if(loggedIn){
         fetch('/api/users/', {
             method: 'GET',
             headers: {

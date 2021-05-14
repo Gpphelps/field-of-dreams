@@ -1,6 +1,8 @@
 
 
 let testAttributes = {
+    name: 'test',
+    id: 1,
     maxCurve: 0.04,
     maxVariation: 0.05,
     stemWidth: 0.2,
