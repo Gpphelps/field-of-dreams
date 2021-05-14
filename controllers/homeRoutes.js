@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
         // Passes the seralized data and a session flag into the template for rendering onto the homepage
         res.render('homepage', {
             flowers,
-            logged_in: req.session.logged_in
+            logged_in: req.session.loggedIn
         });
     } catch (err) {
         res.status(500).json(err);
@@ -50,7 +50,7 @@ router.get('/create', async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-    if (req.session.logged_in) {
+    if (req.session.loggedIn) {
         res.redirect('/profile');
         return;
     }
