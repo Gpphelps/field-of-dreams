@@ -16,7 +16,9 @@ const getFlowers = () => {
     })
 }
 
-
+let loggedIn = document.querySelector('#login-proxy').textContent
+console.log('LOGGED IN PROXY VALUE BELOW')
+console.log(loggedIn)
 
 // let testArray = [
 //     {
