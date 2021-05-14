@@ -15,12 +15,6 @@ Flower.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        height: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            max: 10,
-            min: 1,
-        },
         stem_width: {
             type: DataTypes.INTEGER,
             allowNull: false,
