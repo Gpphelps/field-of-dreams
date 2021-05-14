@@ -207,6 +207,7 @@ const myFlowersInit = () => {
         })
         .then((response) => response.json())
         .then((data) => {
+            console.log(data)
             displayUserFlowers(data)
         })
     }

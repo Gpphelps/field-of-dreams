@@ -162,6 +162,15 @@ body {
 }
 
 
+#flowerName {
+    background-color: rgb(22,16,22);
+    border: 1px yellow solid;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    color: yellow;
+    padding: 10px;
+    font-size: 20px;
+}
 
 
 #inputHousing {
