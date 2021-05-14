@@ -151,32 +151,35 @@ let selectedAttr = {
 }
 
 const plantNewFlower = (e) => {
-    console.log(e.clientX);
+    if(logged_in){
+        console.log(e.clientX);
 
-    let canvRect = canvas.canv.getBoundingClientRect()
-    let placeX = e.clientX + canvRect.left;
-    let placeY = e.clientY - canvRect.top;
-    let newFlower = new Flower(selectedAttr,20,placeX,placeY,canvas.ctx)
-    newFlower.init()
-    newFlower.draw()
-
-    let plantedFlowerModelCompatible = {
-        flower_position: [placeX,placeY],
-        flower_id: selectedAttr.id
+        let canvRect = canvas.canv.getBoundingClientRect()
+        let placeX = e.clientX + canvRect.left;
+        let placeY = e.clientY - canvRect.top;
+        let newFlower = new Flower(selectedAttr,20,placeX,placeY,canvas.ctx)
+        newFlower.init()
+        newFlower.draw()
+    
+        let plantedFlowerModelCompatible = {
+            flower_position: [placeX,placeY],
+            flower_id: selectedAttr.id
+        }
+    
+        fetch('/api/plantedRoutes', {
+            method: 'POST',
+            body: JSON.stringify(plantedFlowerModelCompatible),
+            headers: {
+                'Content-Type': 'application/json', 
+            }
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('STATUS:' + response.status)
+            console.log(data)
+        })
     }
 
-    fetch('/api/plantedRoutes', {
-        method: 'POST',
-        body: JSON.stringify(plantedFlowerModelCompatible),
-        headers: {
-            'Content-Type': 'application/json', 
-        }
-    })
-    .then((response) => response.json())
-    .then((data) => {
-        console.log('STATUS:' + response.status)
-        console.log(data)
-    })
 }
 
 canvas.canv.addEventListener('mousedown',plantNewFlower)
@@ -184,16 +187,19 @@ canvas.canv.addEventListener('mousedown',plantNewFlower)
 
 
 const myFlowersInit = () => {
-    fetch('/api/users/', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json', 
-        }
-    })
-    .then((response) => response.json())
-    .then((data) => {
-        displayUserFlowers(data)
-    })
+    if(logged_in){
+        fetch('/api/users/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json', 
+            }
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            displayUserFlowers(data)
+        })
+    }
+
 }
 
 const selectFlower = (e) => {
