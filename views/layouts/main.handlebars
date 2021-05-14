@@ -28,7 +28,11 @@
   <div>
     {{{body}}}
   </div>
-  <p id='login-proxy' style='display:none'>{{logged_in}}</p>
+  {{#if logged_in}}
+  <p id='login-proxy' style='display:none'>true</p>
+  {{else}}
+  <p id='login-proxy' style='display:none'>false</p>
+  {{/if}}
 </body>
 {{#if logged_in}}
 <script src="./js/logout.js"></script>

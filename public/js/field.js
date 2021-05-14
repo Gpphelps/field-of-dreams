@@ -16,7 +16,15 @@ const getFlowers = () => {
     })
 }
 
-let loggedIn = document.querySelector('#login-proxy').textContent
+
+let loggedIn;
+let proxyText = document.querySelector('#login-proxy').textContent
+if(proxyText == 'true'){
+    loggedIn = true
+} else {
+    loggedIn = false
+}
+
 console.log('LOGGED IN PROXY VALUE BELOW')
 console.log(loggedIn)
 
@@ -436,22 +444,25 @@ const displayUserFlowers = (flowers) => {
 
 let userFlowersExpanded = true;
 
-document.querySelector('#userFlowersExpand').addEventListener('mousedown',function(){
-    userFlowersExpanded = !userFlowersExpanded
+if(loggedIn){
+    document.querySelector('#userFlowersExpand').addEventListener('mousedown',function(){
+        userFlowersExpanded = !userFlowersExpanded
+    
+        if(userFlowersExpanded){
+            document.querySelector('#userFlowers').classList.remove('userFlowersClose')
+            document.querySelector('#userFlowers').classList.add('userFlowersOpen')
+            document.querySelector('#userFlowersExpand').innerHTML = '-'
+        } else {
+            document.querySelector('#userFlowers').classList.remove('userFlowersOpen')
+            document.querySelector('#userFlowers').classList.add('userFlowersClose')
+            document.querySelector('#userFlowersExpand').innerHTML = '+'
+    
+    
+        }
+    
+    })
+}
 
-    if(userFlowersExpanded){
-        document.querySelector('#userFlowers').classList.remove('userFlowersClose')
-        document.querySelector('#userFlowers').classList.add('userFlowersOpen')
-        document.querySelector('#userFlowersExpand').innerHTML = '-'
-    } else {
-        document.querySelector('#userFlowers').classList.remove('userFlowersOpen')
-        document.querySelector('#userFlowers').classList.add('userFlowersClose')
-        document.querySelector('#userFlowersExpand').innerHTML = '+'
-
-
-    }
-
-})
 
 
 
