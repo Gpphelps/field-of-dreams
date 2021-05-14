@@ -4,9 +4,8 @@ const {Plantedflower, Flower} = require('../../models');
 router.post('/', async (req, res) => {
     try {
        const newPlant =  await Plantedflower.create({
-           flower_position: req.body.flower_position,
+           flower_position: JSON.stringify(req.body.flower_position),
            flower_id: req.body.flower_id,
-
        })
        res.status(200).json(newPlant);
     } catch (err) {
@@ -19,14 +18,11 @@ router.get('/', async (req, res) => {
     try {
         const allPlantedFlowersDB = await Plantedflower.findAll({
             include: [
-                {
-                    model: Flower,
-                },
+                { model: Flower },
             ],
         });
 
         const allPlantedFlowers = allPlantedFlowersDB.map((flower) => flower.get({ plain: true }))
-        
         res.status(200).json(allPlantedFlowers)
     }
     catch (err){
