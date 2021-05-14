@@ -45,7 +45,7 @@ router.get('/create', async (req, res) => {
     try {
         res.render('create', {
             logged_in: req.session.loggedIn,
-            user_id: req.session.user_id
+            user_id: req.session.user_id,
         });
     } catch (err) {
         res.status(500).json(err);
