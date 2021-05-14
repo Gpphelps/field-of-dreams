@@ -1,6 +1,8 @@
 
 
 let testAttributes = {
+    name: 'test',
+    id: 1,
     maxCurve: 0.04,
     maxVariation: 0.05,
     stemWidth: 0.2,
@@ -152,10 +154,11 @@ const attrConstructor = () => {
     const petalScale = document.querySelector('#petalScale').value
     const petalScaleVariation = document.querySelector('#petalScaleVariation').value
 
-
+    const name = document.querySelector('#flowerName').value
     console.log(stemSegments)
 
     let attributes = {
+        name: name,
         maxCurve: Number(maxCurve),
         maxVariation: Number(maxVariation),
         stemWidth: Number(stemWidth),
@@ -180,7 +183,7 @@ const attrConstructor = () => {
         // segments: 4,
         segmentVaraiation: Number(segmentVaraiation),
         petalNum: Number(petalNum),
-        petalShape: JSON.stringify(petalShape),
+        petalShape: petalShape,
         petalScale: Number(petalScale),
         petalScaleVariation: Number(petalScaleVariation),
     }
@@ -253,9 +256,11 @@ rgbInputs.forEach(input => {
 
 const submitFlower = async () => {
     let attrObj = attrConstructor()
+    resetCanv()
     let statusP = document.querySelector('#saveStatus');
 
     let attributeDBFormat = {
+        name: attrObj.name,
         max_curve: attrObj.maxCurve,
         max_variation: attrObj.maxVariation,
         stem_width: attrObj.stemWidth,
@@ -273,9 +278,11 @@ const submitFlower = async () => {
         segments: attrObj.segments,
         segment_variation: attrObj.segmentVaraiation,
         petal_number: attrObj.petalColor,
-        petal_shape: attrObj.petalShape,
+        petal_shape: JSON.stringify(attrObj.petalShape),
         petal_scale: attrObj.petalScale,
         petal_scale_variation: attrObj.petalScaleVariation,
+        user_id: document.querySelector('#userIdProxy').value()
+
     }
 
     statusP.innerHTML = 'Saving Flower...'
