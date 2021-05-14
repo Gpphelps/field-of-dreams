@@ -88,6 +88,7 @@ console.log(loggedIn)
 
 const drawFlowers = (flowers) => {
     flowers.forEach(flower => {
+        console.log(flower)
         let pos = JSON.parse(flower.flower_position)
         let flowerX = pos[0]
         let flowerY = pos[1]
