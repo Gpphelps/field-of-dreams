@@ -175,7 +175,7 @@ const plantNewFlower = (e) => {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log('STATUS:' + response.status)
+            console.log('STATUS:' + data.status)
             console.log(data)
         })
     }
