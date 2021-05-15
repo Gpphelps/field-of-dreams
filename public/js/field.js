@@ -134,7 +134,7 @@ const drawFlowers = (flowers) => {
 
 
 let selectedAttr = {
-    id: 1,
+    id: 6,
     maxCurve: 0.1,
     maxVariation: 0.05,
     stemWidth: 0.2,
@@ -188,7 +188,6 @@ const plantNewFlower = (e) => {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log('STATUS:' + data.status)
             console.log(data)
         })
     }
@@ -226,7 +225,7 @@ const selectFlower = (e) => {
     e.target.style.outline = '2px rgb(255,0,200) solid';
 
 
-    fetch(`api/flower/${targetFlowerId}`,{
+    fetch(`api/flowers/${targetFlowerId}`,{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
