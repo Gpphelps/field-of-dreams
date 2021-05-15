@@ -176,7 +176,7 @@ const plantNewFlower = (e) => {
 
         let normalized = normalizeCoords(placeX,placeY)
 
-        let newFlower = new Flower(selectedAttr,20,normalized[0],normalized[1],canvas.ctx)
+        let newFlower = new Flower(selectedAttr,20,placeX,placeY,canvas.ctx)
         newFlower.init()
         newFlower.draw()
     
