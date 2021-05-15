@@ -277,7 +277,7 @@ const submitFlower = async () => {
         petal_color_variation: attrObj.petalColorVariation,
         segments: attrObj.segments,
         segment_variation: attrObj.segmentVaraiation,
-        petal_number: attrObj.petalColor,
+        petal_number: attrObj.petalNum,
         petal_shape: JSON.stringify(attrObj.petalShape),
         petal_scale: attrObj.petalScale,
         petal_scale_variation: attrObj.petalScaleVariation,
