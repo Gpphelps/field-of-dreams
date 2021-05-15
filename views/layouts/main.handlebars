@@ -13,7 +13,7 @@
 
 <body>
   <header>
-      <h1>Field of Dreams</h1>
+      <h1 id='maintitle'>Field of Dreams</h1>
       <div id='headerNavOptions'>
         {{#if logged_in}}
           <h3 id='logout'>Logout</h3>
@@ -45,6 +45,10 @@
 
   document.querySelector('#login').addEventListener('mousedown',function(){
     window.location.href = "/login"
+  })
+
+  document.querySelector('#maintitle').addEventListener('mousedown',function(){
+    window.location.href = "/"
   })
   </script>
 </html>

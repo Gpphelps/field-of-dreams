@@ -151,6 +151,10 @@ body {
     border-radius: 15px;
 }
 
+#displayHousing > button:hover {
+    background-color: rgb(180,180,180);
+}
+
 #regenButton {
     height: 40px;
 }
@@ -292,6 +296,7 @@ body {
     justify-content: center;
     width: 100%;
     height: 300px;
+    color: yellow;
 }
 
 #userFlowersExpand {

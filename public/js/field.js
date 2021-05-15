@@ -12,6 +12,7 @@ const getFlowers = () => {
     })
     .then((response)=> response.json())
     .then((data) => {
+        console.log(data)
         drawFlowers(data)
     })
 }
@@ -87,6 +88,7 @@ console.log(loggedIn)
 
 const drawFlowers = (flowers) => {
     flowers.forEach(flower => {
+        // console.log(flower)
         let pos = JSON.parse(flower.flower_position)
         let flowerX = pos[0]
         let flowerY = pos[1]
@@ -122,7 +124,7 @@ const drawFlowers = (flowers) => {
         }
 
         let newFlower = new Flower(attr,20,flowerX,flowerY,canvas.ctx);
-        console.log(newFlower)
+        // console.log(newFlower)
         newFlower.init()
         newFlower.draw()
     })
@@ -132,7 +134,7 @@ const drawFlowers = (flowers) => {
 
 
 let selectedAttr = {
-    id: 1,
+    id: 6,
     maxCurve: 0.1,
     maxVariation: 0.05,
     stemWidth: 0.2,
@@ -186,7 +188,6 @@ const plantNewFlower = (e) => {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log('STATUS:' + data.status)
             console.log(data)
         })
     }
@@ -224,7 +225,7 @@ const selectFlower = (e) => {
     e.target.style.outline = '2px rgb(255,0,200) solid';
 
 
-    fetch(`api/flower/${targetFlowerId}`,{
+    fetch(`api/flowers/${targetFlowerId}`,{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

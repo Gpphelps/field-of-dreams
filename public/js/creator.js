@@ -255,8 +255,8 @@ rgbInputs.forEach(input => {
 
 
 const submitFlower = async () => {
-    let attrObj = attrConstructor()
     resetCanv()
+    let attrObj = attrConstructor()
     let statusP = document.querySelector('#saveStatus');
 
     let attributeDBFormat = {
@@ -277,16 +277,17 @@ const submitFlower = async () => {
         petal_color_variation: attrObj.petalColorVariation,
         segments: attrObj.segments,
         segment_variation: attrObj.segmentVaraiation,
-        petal_number: attrObj.petalColor,
+        petal_number: attrObj.petalNum,
         petal_shape: JSON.stringify(attrObj.petalShape),
         petal_scale: attrObj.petalScale,
         petal_scale_variation: attrObj.petalScaleVariation,
-        user_id: document.querySelector('#userIdProxy').value()
+        user_id: document.querySelector('#userIdProxy').textContent
 
     }
 
     statusP.innerHTML = 'Saving Flower...'
     //NEED TO PUT IN THE ACTUAL ROUTE
+    console.log(attributeDBFormat)
     const response = await fetch('/api/flowers', {
         method: 'POST',
         body: JSON.stringify(attributeDBFormat),
