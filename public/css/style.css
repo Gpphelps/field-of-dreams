@@ -668,6 +668,7 @@ body {
 th,td {
     padding: 15px;
     border: 1px solid yellow;
+    color:yellow
 }
 
 th {

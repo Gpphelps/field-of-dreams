@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Flower, User, Plantedflower } = require('../models');
-const withAuth = require('../utils/auth');
+
 
 router.get('/', async (req, res) => {
     try {
@@ -21,8 +21,8 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Uses the withAuth middleware to prevent access to the proflie page unless the user is logged in
-router.get('/profile', withAuth, async (req, res) => {
+
+router.get('/profile-page', async (req, res) => {
     try {
         // Finds the logged in user's profile based on their session ID
         const userData = await User.findByPk(req.session.user_id, {
@@ -31,7 +31,7 @@ router.get('/profile', withAuth, async (req, res) => {
         });
 
         const user = userData.get({plain: true});
-
+        // renders the user's profile page
         res.render('profile', {
             ...user,
             logged_in: true
