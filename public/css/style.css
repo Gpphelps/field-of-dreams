@@ -327,6 +327,11 @@ body {
     color: yellow;
 }
 
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
 
 /* FIELD STYLES */
 
