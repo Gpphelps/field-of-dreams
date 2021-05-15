@@ -92,6 +92,9 @@ const drawFlowers = (flowers) => {
         let pos = JSON.parse(flower.flower_position)
         let flowerX = pos[0]
         let flowerY = pos[1]
+
+        let denormalized = denormalizeCoords(flowerX,flowerY);
+
         let f = flower.flower
 
         let attr = {
@@ -123,7 +126,7 @@ const drawFlowers = (flowers) => {
             petalScaleVariation: f.petal_scale_variation,
         }
 
-        let newFlower = new Flower(attr,20,flowerX,flowerY,canvas.ctx);
+        let newFlower = new Flower(attr,20,denormalized[0],denormalized[1],canvas.ctx);
         // console.log(newFlower)
         newFlower.init()
         newFlower.draw()
@@ -170,12 +173,15 @@ const plantNewFlower = (e) => {
         let canvRect = canvas.canv.getBoundingClientRect()
         let placeX = e.clientX + canvRect.left;
         let placeY = e.clientY - canvRect.top;
-        let newFlower = new Flower(selectedAttr,20,placeX,placeY,canvas.ctx)
+
+        let normalized = normalizeCoords(placeX,placeY)
+
+        let newFlower = new Flower(selectedAttr,20,normalized[0],normalized[1],canvas.ctx)
         newFlower.init()
         newFlower.draw()
     
         let plantedFlowerModelCompatible = {
-            flower_position: JSON.stringify([placeX,placeY]),
+            flower_position: JSON.stringify([normalized[0],normalized[1]]),
             flower_id: selectedAttr.id
         }
     
@@ -452,7 +458,7 @@ const displayUserFlowers = (flowers) => {
 //     location.reload();
 // }
 
-let userFlowersExpanded = true;
+let userFlowersExpanded = false;
 
 if(loggedIn){
     document.querySelector('#userFlowersExpand').addEventListener('mousedown',function(){
@@ -466,8 +472,6 @@ if(loggedIn){
             document.querySelector('#userFlowers').classList.remove('userFlowersOpen')
             document.querySelector('#userFlowers').classList.add('userFlowersClose')
             document.querySelector('#userFlowersExpand').innerHTML = '+'
-    
-    
         }
     
     })
@@ -478,3 +482,13 @@ if(loggedIn){
 
 getFlowers()
 myFlowersInit()
+
+
+//takes certain input coords and makes (0,0) at the center of the page rather than top left
+const normalizeCoords = (x,y) => {
+    return [x-(window.innerWidth/2),y-(window.innerHeight/2)]
+}
+
+const denormalizeCoords = (x,y) => {
+    return [x+(window.innerWidth/2),y+(window.innerHeight/2)]
+}
