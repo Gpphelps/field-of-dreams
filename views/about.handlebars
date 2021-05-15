@@ -1,4 +1,71 @@
-<div class='aboutPage'>
-    <h1>About</h1>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error modi quas, debitis a pariatur ullam quam maxime suscipit libero quaerat sint repudiandae quis nulla, adipisci est. Cupiditate fuga quos amet!</p>
-</div>
+    <div id='aboutCont'>
+        <div class='aboutPage'>
+            <h1>About</h1>
+            <p>Field of Dreams is a website that allows users to plant flowers on a field shared by all users of the website. Users can create flowers in the flower creator which uses a rendering engine that takes in a set of attributes users can set which dictate how the flowers are generated. Through this technique users can customize the shape of petals, color of the stem, the length of the stem and more in order to generate a wide range of flowers.</p>
+        </div>
+        <div id='attrRef'>
+            <h1>Flower Attribute Reference</h1>
+            <table>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Definition</th>
+                </tr>
+                <tr>
+                    <td>Max Curve</td>
+                    <td>Max curve dictates the maximum amount of curve (which is the amount a flower will bend to one side) a flower will have and every flower generated from those attributes will have a curve that is a random amount between 0 and the maximum.</td>
+                </tr>
+                <tr>
+                    <td>Max Variation</td>
+                    <td>Decides the maximum amount any stem segment's growth vector will vary from the current growth vector and picks a random amount between 0 and the maximum. Higher max variations will cause more irregularity in the stem's shape.</td>
+                </tr>
+                <tr>
+                    <td>Stem Width</td>
+                    <td>Thickness of the stem.</td>
+                </tr>
+                <tr>
+                    <td>Bulb Radius</td>
+                    <td>Size of the flower's bulb.</td>
+                </tr>
+                <tr>
+                    <td>Bulb Color</td>
+                    <td>Red, Green and Blue values of the color of the flower's bulb.</td>
+                </tr>
+                <tr>
+                    <td>Stem Color</td>
+                    <td>Red, Green and Blue values of the color of the flower's stem.</td>
+                </tr>
+                <tr>
+                    <td>Petal Color</td>
+                    <td>Red, Green and Blue values of the color of the flower's petals.</td>
+                </tr>
+                <tr>
+                    <td>Petal Color Variation</td>
+                    <td>The maximum amount that will be added or subttracted from the red, green and blue values of the color of each petal. A single value is randomly picked between 0 and the selected petal color variation and is added or subtracted the same amount from the petal's red, green and blue values.</td>
+                </tr>
+                <tr>
+                    <td>Segments</td>
+                    <td>The number of segments that the flower's stem will extend to. Higher segment values will lead to taller flowers.</td>
+                </tr>
+                <tr>
+                    <td>Segment Variation</td>
+                    <td>The maximum amount that the number of segments will vary from flower to flower. Higher values will cause a wider range of flower heights from the same set of flower attributes</td>
+                </tr>
+                <tr>
+                    <td>Petal Number</td>
+                    <td>The number of petals the flower will have.</td>
+                </tr>
+                <tr>
+                    <td>Petal Shape</td>
+                    <td>A set of points which make up the shape of the petal which is rotated around the bulb for every petal.</td>
+                </tr>
+                <tr>
+                    <td>Petal Scale</td>
+                    <td>Amount that the size of the petals are multiplied by. Higher petal scales will lead to larger petals.</td>
+                </tr>
+                <tr>
+                    <td>Petal Scale Variation</td>
+                    <td>The maximum amount that the size of the petals will vary from the norm. For every petal a random value between 0 and the petal scale variation is chosen seperatley for the width and height of the petal. Higher values will cause more variation in the size of the petals and more difference on average between the width and height of the petal leading to more irregular petal shapes.</td>
+                </tr>
+            </table>
+        </div>
+    </div>

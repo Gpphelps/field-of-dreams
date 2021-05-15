@@ -582,5 +582,58 @@ body {
 /*ABOUT PAGE STYLES*/
 
 .aboutPage {
-    
+    /* color: yellow; */
+    max-width: 768px;
+    margin: 20px;
+}
+
+.aboutPage > h1 {
+    font-family: Helvetica;
+} 
+
+#attrRef {
+    max-width: 768px;
+    width: 100%;
+}
+
+#attrRef > h1{
+    font-family: Helvetica;
+}
+
+#attrRef > table {
+    width: 100%;
+    margin-bottom: 40px;
+}
+th,td {
+    padding: 15px;
+    border: 1px solid yellow;
+}
+
+th {
+    font-family: Helvetica;
+    color:rgb(255, 0, 200)
+}
+
+
+
+/* MOBILE STUFF */
+
+@media only screen and (max-width: 600px) {
+    #creatorBody {
+        flex-direction: column;
+        height: 95vh;
+    }
+
+    #displayHousing {
+        height: 500px;
+    }
+
+    #saveButton {
+        height: 75px;
+    }
+
+    #inputHousing {
+        height: 100%;
+        margin-top: 0px;
+    }
 }

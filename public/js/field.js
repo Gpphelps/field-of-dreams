@@ -478,6 +478,15 @@ if(loggedIn){
 }
 
 
+const fieldResize = (e) => {
+    console.log('resize')
+    setTimeout(function(){
+        location.reload()
+    },500)
+}
+
+window.onresize = fieldResize
+
 
 
 getFlowers()
