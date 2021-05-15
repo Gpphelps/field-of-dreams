@@ -39,6 +39,14 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
+
+      let successIndicator = document.createElement("p")
+      successIndicator.style.color = "rgb(0,0,0)"
+      successIndicator.style.backgroundColor = "rgb(0,200,100)"
+      successIndicator.style.padding = '10px'
+      successIndicator.style.borderRadius = '15px'
+      successIndicator.textContent = 'Account Successfully created!'
+      document.querySelector('.formDiv').appendChild(successIndicator)
       document.location.replace('/profile');
     } else {
       alert(response.statusText);
