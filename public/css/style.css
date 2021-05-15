@@ -305,14 +305,16 @@ body {
 #petalCreatorDiv > canvas {
     border-radius: 15px;
     border: 1px yellow solid;
+    margin: 10px;
 }
 
 #petalCreatorDiv > button {
-    margin-left: 5px;
+    margin: 10px 10px 10px 0px;
     border: 1px rgb(255, 0, 200) solid;
     background-color: rgb(22,16,22);
     color: rgb(255, 0, 200);
     border-radius: 15px;
+    width: 100%;
 }
 
 #petalCreatorDiv > button:hover {
@@ -321,6 +323,9 @@ body {
     color: rgb(22,16,22);
 }
 
+#petalCreatorDiv > p {
+    color: yellow;
+}
 
 
 /* FIELD STYLES */
