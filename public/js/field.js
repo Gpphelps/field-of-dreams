@@ -452,7 +452,7 @@ const displayUserFlowers = (flowers) => {
 //     location.reload();
 // }
 
-let userFlowersExpanded = true;
+let userFlowersExpanded = false;
 
 if(loggedIn){
     document.querySelector('#userFlowersExpand').addEventListener('mousedown',function(){
@@ -466,8 +466,6 @@ if(loggedIn){
             document.querySelector('#userFlowers').classList.remove('userFlowersOpen')
             document.querySelector('#userFlowers').classList.add('userFlowersClose')
             document.querySelector('#userFlowersExpand').innerHTML = '+'
-    
-    
         }
     
     })
