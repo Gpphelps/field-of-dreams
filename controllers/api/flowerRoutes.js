@@ -5,7 +5,7 @@ const {Flower} = require('../../models');
 router.post('/', async (req, res) => {
     try {
         console.log('REQUEST BELOW')
-        console.log(req.body)
+        // console.log(req.body)
         const newFlower = await Flower.create({
             name: req.body.name,
             height: req.body.height,
@@ -31,6 +31,7 @@ router.post('/', async (req, res) => {
             petal_scale_variation: req.body.petal_scale_variation,
             user_id: req.body.user_id
         });
+        console.log(newFlower)
 
         res.status(200).json(newFlower);
 
