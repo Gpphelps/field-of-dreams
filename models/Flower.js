@@ -16,19 +16,19 @@ Flower.init(
             allowNull: false,
         },
         stem_width: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(10,2),
             allowNull: false,
         },
         max_curve: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(10,2),
             allowNull: true,
         },
         max_variation: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(10,2),
             allowNull: true,
         },
         bulb_radius: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(10,2),
             allowNull: false,
         },
         bulb_color_R: {
@@ -76,7 +76,7 @@ Flower.init(
             allowNull: false,
         },
         segment_variation: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(10,2),
             allowNull: true,
         },
         petal_number: {
@@ -84,14 +84,14 @@ Flower.init(
             allowNull: false,
         },
         petal_scale: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(10,2),
             allowNull: false,
         },
         petal_shape: {
             type: DataTypes.STRING,
         },
         petal_scale_variation: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(10,2),
             allowNull: false,
         },
         user_id: {
