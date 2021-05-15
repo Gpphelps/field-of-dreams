@@ -85,7 +85,7 @@ const petalShapeRender = () => {
     })
 
     ctx.beginPath()
-    ctx.strokeStyle = 'red'
+    ctx.strokeStyle = 'rgb(255,0,200)'
     let w = petalCanvas.width;
     let h = petalCanvas.height;
     ctx.moveTo((petalShape[0][0]*w),(petalShape[0][1]*h*-1)+(h/2))
