@@ -1,7 +1,7 @@
 
 
 const profileInit = () => {
-    fetch('', {
+    fetch('/api/users/', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -9,7 +9,7 @@ const profileInit = () => {
     })
     .then((response) => response.json())
     .then((data) => {
-        renderProfileFlowers(data)
+        renderProfileFlowers(data.flower)
     })
 }
 
