@@ -4,7 +4,7 @@ canvas.init()
 
 const getFlowers = () => {
     //NEED TO PUT IN THE ACTUAL ROUTE
-    fetch('/api/planted/', {
+    fetch('/api/plantedRoutes/', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json', 
@@ -12,71 +12,86 @@ const getFlowers = () => {
     })
     .then((response)=> response.json())
     .then((data) => {
+        console.log(data)
         drawFlowers(data)
     })
 }
 
 
-let testArray = [
-    {
-        flower_position: [100,200],
-        flower: {
-            max_curve: 0.04,
-            max_variation: 0.05,
-            stem_width: 0.2,
-            bulb_radius: 0.3,
-            bulb_color_R: 255,
-            bulb_color_G: 255,
-            bulb_color_B: 0,
-            petal_color_R: 220,
-            petal_color_G: 0,
-            petal_color_B: 100,
-            stem_color_R: 0,
-            stem_color_G: 100,
-            stem_color_B: 0,
-            petal_color_variation: 125,
-            segments: 5,
-            segment_variation: 0,
-            petal_number: 10,
-            petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
-            petal_scale: 0.3,
-            petal_scale_variation: 0.05,
-        }
-    },
-    {
-        flower_position: [300,400],
-        flower: {
-            max_curve: 0.03,
-            max_variation: 0.07,
-            stem_width: 0.2,
-            bulb_radius: 0.3,
-            bulb_color_R: 255,
-            bulb_color_G: 100,
-            bulb_color_B: 0,
-            petal_color_R: 0,
-            petal_color_G: 10,
-            petal_color_B: 200,
-            stem_color_R: 0,
-            stem_color_G: 100,
-            stem_color_B: 0,
-            petal_color_variation: 125,
-            segments: 5,
-            segment_variation: 0,
-            petal_number: 10,
-            petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
-            petal_scale: 0.3,
-            petal_scale_variation: 0.05,
-        }
-    },
-]
+let loggedIn;
+console.log(document.querySelector('#login-proxy'))
+let proxyText = document.querySelector('#login-proxy').textContent
+if(proxyText == 'true'){
+    loggedIn = true
+} else {
+    loggedIn = false
+}
+
+console.log('LOGGED IN PROXY VALUE BELOW')
+console.log(loggedIn)
+
+// let testArray = [
+//     {
+//         flower_position: [100,200],
+//         flower: {
+//             max_curve: 0.04,
+//             max_variation: 0.05,
+//             stem_width: 0.2,
+//             bulb_radius: 0.3,
+//             bulb_color_R: 255,
+//             bulb_color_G: 255,
+//             bulb_color_B: 0,
+//             petal_color_R: 220,
+//             petal_color_G: 0,
+//             petal_color_B: 100,
+//             stem_color_R: 0,
+//             stem_color_G: 100,
+//             stem_color_B: 0,
+//             petal_color_variation: 125,
+//             segments: 5,
+//             segment_variation: 0,
+//             petal_number: 10,
+//             petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
+//             petal_scale: 0.3,
+//             petal_scale_variation: 0.05,
+//         }
+//     },
+//     {
+//         flower_position: [300,400],
+//         flower: {
+//             max_curve: 0.03,
+//             max_variation: 0.07,
+//             stem_width: 0.2,
+//             bulb_radius: 0.3,
+//             bulb_color_R: 255,
+//             bulb_color_G: 100,
+//             bulb_color_B: 0,
+//             petal_color_R: 0,
+//             petal_color_G: 10,
+//             petal_color_B: 200,
+//             stem_color_R: 0,
+//             stem_color_G: 100,
+//             stem_color_B: 0,
+//             petal_color_variation: 125,
+//             segments: 5,
+//             segment_variation: 0,
+//             petal_number: 10,
+//             petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
+//             petal_scale: 0.3,
+//             petal_scale_variation: 0.05,
+//         }
+//     },
+// ]
 
 
 
 
 const drawFlowers = (flowers) => {
     flowers.forEach(flower => {
-        let flowerX = flower.flower_position[0]
-        let flowerY = flower.flower_position[1]
+        // console.log(flower)
+        let pos = JSON.parse(flower.flower_position)
+        let flowerX = pos[0]
+        let flowerY = pos[1]
         let f = flower.flower
 
         let attr = {
@@ -109,16 +124,17 @@ const drawFlowers = (flowers) => {
         }
 
         let newFlower = new Flower(attr,20,flowerX,flowerY,canvas.ctx);
-        console.log(newFlower)
+        // console.log(newFlower)
         newFlower.init()
         newFlower.draw()
     })
 }
 
-drawFlowers(testArray)
+// drawFlowers(testArray)
 
 
 let selectedAttr = {
+    id: 6,
     maxCurve: 0.1,
     maxVariation: 0.05,
     stemWidth: 0.2,
@@ -148,12 +164,33 @@ let selectedAttr = {
 }
 
 const plantNewFlower = (e) => {
-    console.log(e.clientX);
+    if(loggedIn){
+        console.log(e.clientX);
 
-    let newFlower = new Flower(selectedAttr,20,e.clientX,e.clientY,canvas.ctx)
-    newFlower.init()
-    newFlower.draw()
-
+        let canvRect = canvas.canv.getBoundingClientRect()
+        let placeX = e.clientX + canvRect.left;
+        let placeY = e.clientY - canvRect.top;
+        let newFlower = new Flower(selectedAttr,20,placeX,placeY,canvas.ctx)
+        newFlower.init()
+        newFlower.draw()
+    
+        let plantedFlowerModelCompatible = {
+            flower_position: JSON.stringify([placeX,placeY]),
+            flower_id: selectedAttr.id
+        }
+    
+        fetch('/api/plantedRoutes', {
+            method: 'POST',
+            body: JSON.stringify(plantedFlowerModelCompatible),
+            headers: {
+                'Content-Type': 'application/json', 
+            }
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+        })
+    }
 
 }
 
@@ -162,16 +199,20 @@ canvas.canv.addEventListener('mousedown',plantNewFlower)
 
 
 const myFlowersInit = () => {
-    fetch('/api/users/', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json', 
-        }
-    })
-    .then((response) => response.json())
-    .then((data) => {
-        displayUserFlowers(data)
-    })
+    if(loggedIn){
+        fetch('/api/users/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json', 
+            }
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            displayUserFlowers(data.flowers)
+        })
+    }
+
 }
 
 const selectFlower = (e) => {
@@ -184,7 +225,7 @@ const selectFlower = (e) => {
     e.target.style.outline = '2px rgb(255,0,200) solid';
 
 
-    fetch(`api/flower/${targetFlowerId}`,{
+    fetch(`api/flowers/${targetFlowerId}`,{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -193,6 +234,7 @@ const selectFlower = (e) => {
     .then((response) => response.json())
     .then((data) => {
         selectedAttr = {
+            id: data.id,
             maxCurve: data.max_curve,
             maxVariation: data.max_variation,
             stemWidth: data.stem_width,
@@ -216,7 +258,7 @@ const selectFlower = (e) => {
             segments: data.segments,
             segmentVaraiation: data.segment_variation,
             petalNum: data.petal_number,
-            petalShape: data.petal_shape,
+            petalShape: JSON.parse(data.petal_shape),
             petalScale: data.petal_scale,
             petalScaleVariation: data.petal_scale_variation,
         }
@@ -226,6 +268,18 @@ const selectFlower = (e) => {
 
 
 const displayUserFlowers = (flowers) => {
+    if(flowers.length == 0){
+        let div = document.querySelector('#flowerCanvDiv');
+        let msgCont = document.createElement('div');
+        msgCont.classList.add('noFlowersDiv');
+        
+        let msg = document.createElement('p');
+        
+        div.appendChild(msgCont)
+        msgCont.appendChild(msg)
+
+        msg.innerHTML = "You don't have any flowers yet."
+    }
     flowers.forEach(flower => {
         let div = document.querySelector('#flowerCanvDiv')
         let canv = document.createElement('canvas')
@@ -275,117 +329,117 @@ const displayUserFlowers = (flowers) => {
     })
 }
 
-displayUserFlowers([{max_curve: 0.04,
-    max_variation: 0.05,
-    stem_width: 0.2,
-    bulb_radius: 0.3,
-    bulb_color_R: 255,
-    bulb_color_G: 255,
-    bulb_color_B: 0,
-    petal_color_R: 220,
-    petal_color_G: 0,
-    petal_color_B: 100,
-    stem_color_R: 0,
-    stem_color_G: 100,
-    stem_color_B: 0,
-    petal_color_variation: 125,
-    segments: 5,
-    segment_variation: 0,
-    petal_number: 10,
-    petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
-    petal_scale: 0.3,
-    petal_scale_variation: 0.05,
-    id:1},
-    {
-    max_curve: 0.04,
-    max_variation: 0.05,
-    stem_width: 0.2,
-    bulb_radius: 0.3,
-    bulb_color_R: 255,
-    bulb_color_G: 255,
-    bulb_color_B: 0,
-    petal_color_R: 220,
-    petal_color_G: 0,
-    petal_color_B: 100,
-    stem_color_R: 0,
-    stem_color_G: 100,
-    stem_color_B: 0,
-    petal_color_variation: 125,
-    segments: 5,
-    segment_variation: 0,
-    petal_number: 10,
-    petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
-    petal_scale: 0.3,
-    petal_scale_variation: 0.05,
-    id:2},
-    {
-    max_curve: 0.04,
-    max_variation: 0.05,
-    stem_width: 0.2,
-    bulb_radius: 0.3,
-    bulb_color_R: 255,
-    bulb_color_G: 255,
-    bulb_color_B: 0,
-    petal_color_R: 220,
-    petal_color_G: 0,
-    petal_color_B: 100,
-    stem_color_R: 0,
-    stem_color_G: 100,
-    stem_color_B: 0,
-    petal_color_variation: 125,
-    segments: 5,
-    segment_variation: 0,
-    petal_number: 10,
-    petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
-    petal_scale: 0.3,
-    petal_scale_variation: 0.05,
-    id:3},
-    {
-        max_curve: 0.04,
-        max_variation: 0.05,
-        stem_width: 0.2,
-        bulb_radius: 0.3,
-        bulb_color_R: 255,
-        bulb_color_G: 255,
-        bulb_color_B: 0,
-        petal_color_R: 220,
-        petal_color_G: 0,
-        petal_color_B: 100,
-        stem_color_R: 0,
-        stem_color_G: 100,
-        stem_color_B: 0,
-        petal_color_variation: 125,
-        segments: 5,
-        segment_variation: 0,
-        petal_number: 10,
-        petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
-        petal_scale: 0.3,
-        petal_scale_variation: 0.05,
-        id:4},
-    {
-        max_curve: 0.04,
-        max_variation: 0.05,
-        stem_width: 0.2,
-        bulb_radius: 0.3,
-        bulb_color_R: 255,
-        bulb_color_G: 255,
-        bulb_color_B: 0,
-        petal_color_R: 220,
-        petal_color_G: 0,
-        petal_color_B: 100,
-        stem_color_R: 0,
-        stem_color_G: 100,
-        stem_color_B: 0,
-        petal_color_variation: 125,
-        segments: 5,
-        segment_variation: 0,
-        petal_number: 10,
-        petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
-        petal_scale: 0.3,
-        petal_scale_variation: 0.05,
-        id:5},
+// displayUserFlowers([{max_curve: 0.04,
+//     max_variation: 0.05,
+//     stem_width: 0.2,
+//     bulb_radius: 0.3,
+//     bulb_color_R: 255,
+//     bulb_color_G: 255,
+//     bulb_color_B: 0,
+//     petal_color_R: 220,
+//     petal_color_G: 0,
+//     petal_color_B: 100,
+//     stem_color_R: 0,
+//     stem_color_G: 100,
+//     stem_color_B: 0,
+//     petal_color_variation: 125,
+//     segments: 5,
+//     segment_variation: 0,
+//     petal_number: 10,
+//     petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
+//     petal_scale: 0.3,
+//     petal_scale_variation: 0.05,
+//     id:1},
+//     {
+//     max_curve: 0.04,
+//     max_variation: 0.05,
+//     stem_width: 0.2,
+//     bulb_radius: 0.3,
+//     bulb_color_R: 255,
+//     bulb_color_G: 255,
+//     bulb_color_B: 0,
+//     petal_color_R: 220,
+//     petal_color_G: 0,
+//     petal_color_B: 100,
+//     stem_color_R: 0,
+//     stem_color_G: 100,
+//     stem_color_B: 0,
+//     petal_color_variation: 125,
+//     segments: 5,
+//     segment_variation: 0,
+//     petal_number: 10,
+//     petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
+//     petal_scale: 0.3,
+//     petal_scale_variation: 0.05,
+//     id:2},
+//     {
+//     max_curve: 0.04,
+//     max_variation: 0.05,
+//     stem_width: 0.2,
+//     bulb_radius: 0.3,
+//     bulb_color_R: 255,
+//     bulb_color_G: 255,
+//     bulb_color_B: 0,
+//     petal_color_R: 220,
+//     petal_color_G: 0,
+//     petal_color_B: 100,
+//     stem_color_R: 0,
+//     stem_color_G: 100,
+//     stem_color_B: 0,
+//     petal_color_variation: 125,
+//     segments: 5,
+//     segment_variation: 0,
+//     petal_number: 10,
+//     petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
+//     petal_scale: 0.3,
+//     petal_scale_variation: 0.05,
+//     id:3},
+//     {
+//         max_curve: 0.04,
+//         max_variation: 0.05,
+//         stem_width: 0.2,
+//         bulb_radius: 0.3,
+//         bulb_color_R: 255,
+//         bulb_color_G: 255,
+//         bulb_color_B: 0,
+//         petal_color_R: 220,
+//         petal_color_G: 0,
+//         petal_color_B: 100,
+//         stem_color_R: 0,
+//         stem_color_G: 100,
+//         stem_color_B: 0,
+//         petal_color_variation: 125,
+//         segments: 5,
+//         segment_variation: 0,
+//         petal_number: 10,
+//         petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
+//         petal_scale: 0.3,
+//         petal_scale_variation: 0.05,
+//         id:4},
+//     {
+//         max_curve: 0.04,
+//         max_variation: 0.05,
+//         stem_width: 0.2,
+//         bulb_radius: 0.3,
+//         bulb_color_R: 255,
+//         bulb_color_G: 255,
+//         bulb_color_B: 0,
+//         petal_color_R: 220,
+//         petal_color_G: 0,
+//         petal_color_B: 100,
+//         stem_color_R: 0,
+//         stem_color_G: 100,
+//         stem_color_B: 0,
+//         petal_color_variation: 125,
+//         segments: 5,
+//         segment_variation: 0,
+//         petal_number: 10,
+//         petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
+//         petal_scale: 0.3,
+//         petal_scale_variation: 0.05,
+//         id:5},
     
-])
+// ])
 
 // window.onresize = function(){
 //     location.reload();
@@ -393,20 +447,27 @@ displayUserFlowers([{max_curve: 0.04,
 
 let userFlowersExpanded = true;
 
-document.querySelector('#userFlowersExpand').addEventListener('mousedown',function(){
-    userFlowersExpanded = !userFlowersExpanded
+if(loggedIn){
+    document.querySelector('#userFlowersExpand').addEventListener('mousedown',function(){
+        userFlowersExpanded = !userFlowersExpanded
+    
+        if(userFlowersExpanded){
+            document.querySelector('#userFlowers').classList.remove('userFlowersClose')
+            document.querySelector('#userFlowers').classList.add('userFlowersOpen')
+            document.querySelector('#userFlowersExpand').innerHTML = '-'
+        } else {
+            document.querySelector('#userFlowers').classList.remove('userFlowersOpen')
+            document.querySelector('#userFlowers').classList.add('userFlowersClose')
+            document.querySelector('#userFlowersExpand').innerHTML = '+'
+    
+    
+        }
+    
+    })
+}
 
-    if(userFlowersExpanded){
-        document.querySelector('#userFlowers').classList.remove('userFlowersClose')
-        document.querySelector('#userFlowers').classList.add('userFlowersOpen')
-        document.querySelector('#userFlowersExpand').innerHTML = '-'
-    } else {
-        document.querySelector('#userFlowers').classList.remove('userFlowersOpen')
-        document.querySelector('#userFlowers').classList.add('userFlowersClose')
-        document.querySelector('#userFlowersExpand').innerHTML = '+'
 
 
-    }
 
-})
-
+getFlowers()
+myFlowersInit()

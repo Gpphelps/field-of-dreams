@@ -12,6 +12,7 @@ router.post('/', async (req, res) => {
 
         req.session.save(() => {
             req.session.loggedIn = true;
+            req.session.user_id = userDataDB.id.
             res.status(200).json(userDataDB);
         });
     } catch (err) {
@@ -34,7 +35,8 @@ router.post('/login', async (req, res) => {
                 .json({message: 'Incorrect email or password. Please try again!'});
             return;
         }
-
+        console.log('LOGGING USER DATA DB:')
+        console.log(userDataDB)
         const validPassword = await userDataDB.checkPassword(req.body.password);
 
         if (!validPassword) {
@@ -46,10 +48,10 @@ router.post('/login', async (req, res) => {
 
         req.session.save(() => {
             req.session.loggedIn = true;
-      
+            req.session.user_id = userDataDB.id;
             res
                 .status(200)
-                .json({ user: dbUserData, message: 'You are now logged in!' });
+                .json({ user: userDataDB, message: 'You are now logged in!' });
           });
     } catch (err) {
         console.log(err);
@@ -90,6 +92,24 @@ router.get('/:id', async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
+})
+
+//get route for user getting their own stuff
+router.get('/',async (req,res) => {
+    try {
+        const userData = await User.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password'] },
+            include: [{ model: Flower }],
+        });
+
+        const user = userData.get({ plain: true })
+
+        res.status(200).json(user)
+    }
+    catch(err) {
+        res.status(500).json(err)
+    }
+
 })
 
 module.exports = router;

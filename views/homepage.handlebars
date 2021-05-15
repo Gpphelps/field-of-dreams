@@ -1,10 +1,17 @@
 <div style='position:relative'>
     <canvas id="mainField" style='margin:0px'></canvas>
+    {{#if logged_in}}
     <div id='userFlowers'>
         <h2>My Flowers</h2>
         <p id='userFlowersExpand'>-</p>
         <div id='flowerCanvDiv'></div>
     </div>
+    {{/if}}
+    {{#if logged_in}}
+    <p id='login-proxy' style='display:none'>true</p>
+    {{else}}
+    <p id='login-proxy' style='display:none'>false</p>
+    {{/if}}
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.3.0/math.js"></script>

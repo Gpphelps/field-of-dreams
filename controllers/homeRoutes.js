@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
         // Passes the seralized data and a session flag into the template for rendering onto the homepage
         res.render('homepage', {
             flowers,
-            logged_in: req.session.logged_in
+            logged_in: req.session.loggedIn
         });
     } catch (err) {
         res.status(500).json(err);
@@ -34,15 +34,26 @@ router.get('/profile', withAuth, async (req, res) => {
 
         res.render('profile', {
             ...user,
-            logged_in: true
+            logged_in: req.session.loggedIn
         });
     } catch (err) {
         res.status.json(err);
     }
 });
 
+router.get('/create', async (req, res) => {
+    try {
+        res.render('create', {
+            logged_in: req.session.loggedIn,
+            user_id: req.session.user_id,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 router.get('/login', (req, res) => {
-    if (req.session.logged_in) {
+    if (req.session.loggedIn) {
         res.redirect('/profile');
         return;
     }

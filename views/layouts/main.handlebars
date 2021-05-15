@@ -13,13 +13,14 @@
 
 <body>
   <header>
-      <h1>Field of Dreams</h1>
-      <div>
+      <h1 id='maintitle'>Field of Dreams</h1>
+      <div id='headerNavOptions'>
         {{#if logged_in}}
-          <h3>Logout</h3>
-          <h3>Profile</h3>
+          <h3 id='logout'>Logout</h3>
+          <h3 id='profileButton'>Profile</h3>
+          <h3 id='newFlowerButton'>Make New Flower</h3>
           {{else}}
-          <h3>Login</h3>
+          <h3 id='login'>Login</h3>
         {{/if}}
           <h3>?</h3>
       </div>
@@ -27,8 +28,27 @@
   <div>
     {{{body}}}
   </div>
+
 </body>
-{{#if logged_in}}
+
+<script src="./js/login.js"></script>
 <script src="./js/logout.js"></script>
-{{/if}}
+<script>
+  //lol I know you aren't supposed to do in-doc js but I was lazy and didn't wanna make a whole new file to link everywhere
+  document.querySelector('#newFlowerButton').addEventListener('mousedown',function(){
+    window.location.href = "/create"
+  })
+
+  document.querySelector('#profileButton').addEventListener('mousedown',function(){
+    window.location.href = "/profile"
+  })
+
+  document.querySelector('#login').addEventListener('mousedown',function(){
+    window.location.href = "/login"
+  })
+
+  document.querySelector('#maintitle').addEventListener('mousedown',function(){
+    window.location.href = "/"
+  })
+  </script>
 </html>

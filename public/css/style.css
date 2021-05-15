@@ -36,12 +36,20 @@ header > div > h3 {
     margin-block-end: 0px;
     font-weight: normal;
     font-size: 16px;
+    padding: 5px;
+}
+
+header > div > h3:hover {
+    color: rgb(22,16,22);
+    cursor: pointer;
+    background-color: rgb(255, 0, 200);
+    border-radius: 15px;
 }
 
 header > h1 {
     color: yellow;
     font-family: Helvetica;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 header > h3 {
@@ -143,6 +151,10 @@ body {
     border-radius: 15px;
 }
 
+#displayHousing > button:hover {
+    background-color: rgb(180,180,180);
+}
+
 #regenButton {
     height: 40px;
 }
@@ -154,6 +166,15 @@ body {
 }
 
 
+#flowerName {
+    background-color: rgb(22,16,22);
+    border: 1px yellow solid;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    color: yellow;
+    padding: 10px;
+    font-size: 20px;
+}
 
 
 #inputHousing {
@@ -253,10 +274,6 @@ body {
     color: yellow
 }
 
-.paramInput {
-}
-
-
 
 
 
@@ -271,6 +288,15 @@ body {
     margin: 20px;
     border-radius: 15px;
     width: 500px;
+}
+
+.noFlowersDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 300px;
+    color: yellow;
 }
 
 #userFlowersExpand {
@@ -507,7 +533,7 @@ body {
     align-items: center;
     color: yellow;
     flex-wrap: wrap;
-    height: 100vh;
+    height: 80vh;
 }
 
 .formDiv {
