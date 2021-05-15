@@ -29,6 +29,22 @@ header > div {
     margin-right: 40px
 }
 
+
+header > a {
+    text-decoration: none;
+    color: yellow;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+
+header > a > h1 {
+    font-family: Helvetica;
+    font-weight: bold;
+    text-decoration: none;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+
 header > div > a {
     margin-left: 20px;
     color: yellow;
@@ -37,6 +53,9 @@ header > div > a {
     font-weight: normal;
     font-size: 16px;
     padding: 5px;
+    /* font-family: Helvetica; */
+    font-weight: bold;
+    text-decoration: none;
 }
 
 header > div > a:hover {
