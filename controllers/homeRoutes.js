@@ -37,7 +37,7 @@ router.get('/profile', withAuth, async (req, res) => {
             logged_in: req.session.loggedIn
         });
     } catch (err) {
-        res.status.json(err);
+        res.status(500).json(err);
     }
 });
 
@@ -54,7 +54,7 @@ router.get('/create', async (req, res) => {
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
-        res.redirect('/profile');
+        res.redirect('/homepage');
         return;
     }
     res.render('login');
