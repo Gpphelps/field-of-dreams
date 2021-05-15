@@ -287,6 +287,7 @@ const submitFlower = async () => {
 
     statusP.innerHTML = 'Saving Flower...'
     //NEED TO PUT IN THE ACTUAL ROUTE
+    console.log(attributeDBFormat)
     const response = await fetch('/api/flowers', {
         method: 'POST',
         body: JSON.stringify(attributeDBFormat),
