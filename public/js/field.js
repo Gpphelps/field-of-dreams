@@ -134,7 +134,7 @@ const drawFlowers = (flowers) => {
 
 
 let selectedAttr = {
-    id: 1,
+    id: 6,
     maxCurve: 0.1,
     maxVariation: 0.05,
     stemWidth: 0.2,
