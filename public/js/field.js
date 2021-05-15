@@ -88,7 +88,7 @@ console.log(loggedIn)
 
 const drawFlowers = (flowers) => {
     flowers.forEach(flower => {
-        console.log(flower)
+        // console.log(flower)
         let pos = JSON.parse(flower.flower_position)
         let flowerX = pos[0]
         let flowerY = pos[1]
@@ -124,7 +124,7 @@ const drawFlowers = (flowers) => {
         }
 
         let newFlower = new Flower(attr,20,flowerX,flowerY,canvas.ctx);
-        console.log(newFlower)
+        // console.log(newFlower)
         newFlower.init()
         newFlower.draw()
     })
