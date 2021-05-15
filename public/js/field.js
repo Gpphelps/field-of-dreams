@@ -134,7 +134,7 @@ const drawFlowers = (flowers) => {
 
 
 let selectedAttr = {
-    id: 6,
+    id: 1,
     maxCurve: 0.1,
     maxVariation: 0.05,
     stemWidth: 0.2,
@@ -212,6 +212,7 @@ const myFlowersInit = () => {
             displayUserFlowers(data.flowers)
         })
     }
+
 
 }
 
@@ -326,6 +327,11 @@ const displayUserFlowers = (flowers) => {
         newFlower.draw()
 
         canv.addEventListener('mousedown',selectFlower)
+
+        let elem = {
+            target: document.querySelector('.userFlowerCanv')
+        }
+        selectFlower(elem)
     })
 }
 
