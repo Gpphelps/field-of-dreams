@@ -94,7 +94,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-//get route for user getting their own stuff
+// get route for user getting their own stuff
 router.get('/',async (req,res) => {
     try {
         const userData = await User.findByPk(req.session.user_id, {
