@@ -582,7 +582,36 @@ body {
 /*ABOUT PAGE STYLES*/
 
 .aboutPage {
-    
+    /* color: yellow; */
+    max-width: 768px;
+    margin: 20px;
+}
+
+.aboutPage > h1 {
+    font-family: Helvetica;
+} 
+
+#attrRef {
+    max-width: 768px;
+    width: 100%;
+}
+
+#attrRef > h1{
+    font-family: Helvetica;
+}
+
+#attrRef > table {
+    width: 100%;
+    margin-bottom: 40px;
+}
+th,td {
+    padding: 15px;
+    border: 1px solid yellow;
+}
+
+th {
+    font-family: Helvetica;
+    color:rgb(255, 0, 200)
 }
 
 
