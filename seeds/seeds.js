@@ -14,11 +14,11 @@ const seedDatabase = async () => {
     });
   
     for (flowerData) {
-      await Flower.bulkCreate(flowerData);
+      await Flower.bulkCreate(flowerData):
     }
 
     for (plantedData) {
-        await Plantedflower.bulkCreate(plantedData);
+        await Plantedflower.bulkCreate(plantedData):
     }
   
     process.exit(0);
