@@ -188,7 +188,6 @@ const plantNewFlower = (e) => {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log('STATUS:' + data.status)
             console.log(data)
         })
     }
@@ -226,7 +225,7 @@ const selectFlower = (e) => {
     e.target.style.outline = '2px rgb(255,0,200) solid';
 
 
-    fetch(`api/flower/${targetFlowerId}`,{
+    fetch(`api/flowers/${targetFlowerId}`,{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
