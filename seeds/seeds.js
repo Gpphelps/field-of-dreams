@@ -5,21 +5,21 @@ const userData = require('./user-seed.json');
 const flowerData = require('./flower-seed.json');
 const plantedData = require('./plantedFlower-seed.json');
 
+
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
   
-    const users = await User.bulkCreate(userData, {
+    await User.bulkCreate(userData, {
       individualHooks: true,
       returning: true,
     });
   
-    for (flowerData) {
-      await Flower.bulkCreate(flowerData):
-    }
+    
+    const flowers =  await Flower.bulkCreate(flowerData);
+    console.log(flowers);
 
-    for (plantedData) {
-        await Plantedflower.bulkCreate(plantedData):
-    }
+    const planted = await Plantedflower.bulkCreate(plantedData);
+    console.log(planted);
   
     process.exit(0);
   };
