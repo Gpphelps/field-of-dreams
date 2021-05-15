@@ -22,7 +22,17 @@ npm start && npm run seed
 - Access application and all functionality
 
 ## Usage 
-To use application
+Below is a mockup of the homepage:
+![Field of dreams Homepage](images/homepage.png)
+
+To use application and create your own flower, you must login or sign up. Below is a mockup of the login page:
+![Field of Dreams Login/Sign up Page](images/login.png)
+
+Once the user is logged in, they can create their own flower. On this page, the user is given a set of attributes, whose detailed functionalities are listed below in the **Features** section. To change each attribute, the user simply moves a slider back and forth. The flower mockup on the left will reflect the users changes made. Below is a mockup of the create page: 
+![Field of Dreams Create Flower Page](images/create_flower.png)
+
+Once the user has created their own flower
+
 
 ## Features
 
