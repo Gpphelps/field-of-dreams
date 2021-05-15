@@ -584,3 +584,27 @@ body {
 .aboutPage {
     
 }
+
+
+
+/* MOBILE STUFF */
+
+@media only screen and (max-width: 600px) {
+    #creatorBody {
+        flex-direction: column;
+        height: 95vh;
+    }
+
+    #displayHousing {
+        height: 500px;
+    }
+
+    #saveButton {
+        height: 75px;
+    }
+
+    #inputHousing {
+        height: 100%;
+        margin-top: 0px;
+    }
+}
