@@ -298,10 +298,11 @@ body {
     color: yellow;
 }
 
-#petalCreatorCont {
+#petalCreatorCont > p {
     margin-block-start: 0px;
     margin-block-end: 0px;
-    margin: 10px 10px 10px 5px;
+    margin: 10px 10px 10px 10px;
+    border-radius: 15px;
 }
 
 #petalCreatorDiv {
@@ -322,7 +323,6 @@ body {
     border: 1px rgb(255, 0, 200) solid;
     background-color: rgb(22,16,22);
     color: rgb(255, 0, 200);
-    border-radius: 15px;
     width: 100%;
 }
 
