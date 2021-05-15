@@ -95,21 +95,21 @@ router.get('/:id', async (req, res) => {
 })
 
 //get route for user getting their own stuff
-router.get('/',async (req,res) => {
-    try {
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] },
-            include: [{ model: Flower }],
-        });
+// router.get('/',async (req,res) => {
+//     try {
+//         const userData = await User.findByPk(req.session.user_id, {
+//             attributes: { exclude: ['password'] },
+//             include: [{ model: Flower }],
+//         });
 
-        const user = userData.get({ plain: true })
+//         const user = userData.get({ plain: true })
 
-        res.status(200).json(user)
-    }
-    catch(err) {
-        res.status(500).json(err)
-    }
+//         res.status(200).json(user)
+//     }
+//     catch(err) {
+//         res.status(500).json(err)
+//     }
 
-})
+// })
 
 module.exports = router;
