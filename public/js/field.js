@@ -134,7 +134,7 @@ const drawFlowers = (flowers) => {
 
 
 let selectedAttr = {
-    id: 6,
+    id: 1,
     maxCurve: 0.1,
     maxVariation: 0.05,
     stemWidth: 0.2,
@@ -213,6 +213,7 @@ const myFlowersInit = () => {
         })
     }
 
+
 }
 
 const selectFlower = (e) => {
@@ -233,6 +234,7 @@ const selectFlower = (e) => {
     })
     .then((response) => response.json())
     .then((data) => {
+        console.log(data)
         selectedAttr = {
             id: data.id,
             maxCurve: data.max_curve,
@@ -326,6 +328,11 @@ const displayUserFlowers = (flowers) => {
         newFlower.draw()
 
         canv.addEventListener('mousedown',selectFlower)
+
+        let elem = {
+            target: document.querySelector('.userFlowerCanv')
+        }
+        selectFlower(elem)
     })
 }
 
