@@ -234,7 +234,7 @@ const selectFlower = (e) => {
     })
     .then((response) => response.json())
     .then((data) => {
-        console.log(data)
+        console.log(data[0])
         selectedAttr = {
             id: data.id,
             maxCurve: data.max_curve,
