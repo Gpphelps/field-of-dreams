@@ -2,6 +2,7 @@ const router = require('express').Router();
 const {Plantedflower, Flower} = require('../../models');
 
 router.post('/', async (req, res) => {
+    increaseAllY()
     try {
        const newPlant =  await Plantedflower.create({
            flower_position_x: req.body.flower_position_x,
@@ -14,6 +15,12 @@ router.post('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+const increaseAllY = () => {
+    Plantedflower.increment(
+        { flower_position_y: +5 },
+    );
+}
 
 router.get('/', async (req, res) => {
     try {
