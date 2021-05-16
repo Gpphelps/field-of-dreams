@@ -182,7 +182,7 @@ const plantNewFlower = (e) => {
 
         let normalized = normalizeCoords(placeX,placeY)
 
-        let distScale = ((e.clientY-(canvas.h/2))/canvas.h)*2*40
+        let distScale = ((placeY-(canvas.h/2))/canvas.h)*2*40
         console.log(distScale)
         let newFlower = new Flower(selectedAttr,distScale,placeX,placeY,canvas.ctx)
 
