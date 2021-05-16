@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
                 { model: Flower },
             ],
             order: [
-                ['flower_position_y', 'DESC']
+                ['flower_position_y', 'ASC']
             ]
         });
 
