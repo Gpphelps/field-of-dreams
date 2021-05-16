@@ -22,7 +22,21 @@ npm start && npm run seed
 - Access application and all functionality
 
 ## Usage 
-To use application
+Below is a mockup of the homepage:
+![Field of dreams Homepage](images/homepage.png)
+
+To use application and create your own flower, you must login or sign up. 
+
+Below is a mockup of the login page:
+![Field of Dreams Login/Sign up Page](images/login.png)
+
+Once the user is logged in, they can create their own flower. On this page, the user is given a set of attributes, whose detailed functionalities are listed below in the **Features** section. To change each attribute, the user simply moves a slider back and forth. The flower mockup on the left will reflect the users changes made. 
+
+Below is a mockup of the create page: 
+![Field of Dreams Create Flower Page](images/create_flower.png)
+
+Once the user has created their own unique flower, they can save, name, and then plant their flower on a green field filled with other user's plants. Users can also see a cell filled with the different flowers they have created. 
+
 
 ## Features
 
@@ -69,4 +83,19 @@ The maximum amount that the size of the petals will vary from the norm. For ever
 
 ## Credits
 
+This project was a collaboration between four creators: 
+- Zack Hersh
+
+- Gene Phelps
+
+- Liza Ferguson
+
+- Michael Dameron
+
+
+Below are links to creators respective GitHub profiles:
+- [Zack's Github](https://github.com/zackshersh)
+- [Gene's Github](https://github.com/Gpphelps)
+- [Liza's Github](https://github.com/lizaferguson)
+- [Michael's Github](https://github.com/MichaelDameron)
 
