@@ -15,7 +15,7 @@ Plantedflower.init(
           type: DataTypes.INTEGER,
           allowNull: false,
         },
-        flower_positiion_y: {
+        flower_position_y: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
