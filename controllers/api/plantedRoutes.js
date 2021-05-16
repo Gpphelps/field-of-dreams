@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
 
 const increaseAllY = () => {
     Plantedflower.increment(
-        { flower_position_y: +5 },
+        { flower_position_y: -5 },
         { where: {
             id: {
                 [Op.gte]: 0,
