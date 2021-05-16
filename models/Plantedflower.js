@@ -11,7 +11,7 @@ Plantedflower.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        flower_position_x: { 
+        flower_position: { 
           type: DataTypes.STRING,
         },
         flower_id: {
