@@ -89,9 +89,9 @@ console.log(loggedIn)
 const drawFlowers = (flowers) => {
     flowers.forEach(flower => {
         // console.log(flower)
-        let pos = JSON.parse(flower.flower_position)
-        let flowerX = pos[0]
-        let flowerY = pos[1]
+        // let pos = JSON.parse(flower.flower_position)
+        let flowerX = flower.flower_position_x;
+        let flowerY = flower.flower_position_y;
 
         let denormalized = denormalizeCoords(flowerX,flowerY);
 
@@ -182,8 +182,9 @@ const plantNewFlower = (e) => {
         newFlower.draw()
     
         let plantedFlowerModelCompatible = {
-            flower_position: JSON.stringify([normalized[0],normalized[1]]),
-            flower_id: selectedAttr.id
+            flower_position_x: normalized[0],
+            flower_position_y: normalized[1],
+            flower_id: selectedAttr.id,
         }
     
         fetch('/api/plantedRoutes', {
