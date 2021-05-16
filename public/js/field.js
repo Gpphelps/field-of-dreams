@@ -101,6 +101,7 @@ const drawFlowers = (flowers) => {
         let yDePropped = flowerY*canvas.h;
 
         let denormalized = denormalizeCoords(flowerX,flowerY);
+        console.log(denormalized)
 
         let f = flower.flower
 
@@ -185,6 +186,7 @@ const plantNewFlower = (e) => {
         let placeY = e.clientY - canvRect.top;
 
         let proportionalY = placeY/canvRect.height;
+        console.log(proportionalY)
 
         let normalized = normalizeCoords(placeX,placeY)
 
