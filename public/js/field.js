@@ -2,6 +2,11 @@
 let canvas = new Canvas(document.querySelector('#mainField'),window.innerWidth,window.innerHeight-(document.querySelector('header').offsetHeight),'green')
 canvas.init()
 
+canvas.ctx.beginPath()
+canvas.ctx.fillStyle = '#a2f0fa'
+canvas.ctx.fillRect(0,0,canvas.w,canvas.h/2)
+canvas.ctx.closePath()
+
 const getFlowers = () => {
     //NEED TO PUT IN THE ACTUAL ROUTE
     fetch('/api/plantedRoutes/', {
@@ -126,7 +131,8 @@ const drawFlowers = (flowers) => {
             petalScaleVariation: f.petal_scale_variation,
         }
 
-        let newFlower = new Flower(attr,20,denormalized[0],denormalized[1],canvas.ctx);
+        let distScale = ((denormalized[1]-(canvas.h/2))/canvas.h)*2*40
+        let newFlower = new Flower(attr,distScale,denormalized[0],denormalized[1],canvas.ctx);
         // console.log(newFlower)
         newFlower.init()
         newFlower.draw()
@@ -176,7 +182,9 @@ const plantNewFlower = (e) => {
 
         let normalized = normalizeCoords(placeX,placeY)
 
-        let newFlower = new Flower(selectedAttr,20,placeX,placeY,canvas.ctx)
+        let distScale = ((e.clientY-(canvas.h/2))/canvas.h)*2*40
+        console.log(distScale)
+        let newFlower = new Flower(selectedAttr,distScale,placeX,placeY,canvas.ctx)
 
         newFlower.init()
         newFlower.draw()
