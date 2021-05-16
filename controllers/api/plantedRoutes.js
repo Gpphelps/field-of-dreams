@@ -4,7 +4,8 @@ const {Plantedflower, Flower} = require('../../models');
 router.post('/', async (req, res) => {
     try {
        const newPlant =  await Plantedflower.create({
-           flower_position: req.body.flower_position,
+           flower_position_x: req.body.flower_position_x,
+           flower_position_y: req.body.flower_position_y,
            flower_id: req.body.flower_id,
        })
        res.status(200).json(newPlant);
