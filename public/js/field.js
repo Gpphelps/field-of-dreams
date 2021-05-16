@@ -3,7 +3,7 @@ let canvas = new Canvas(document.querySelector('#mainField'),window.innerWidth,w
 canvas.init()
 
 canvas.ctx.beginPath()
-canvas.ctx.fillStyle = '#a2f0fa'
+canvas.ctx.fillStyle = '#a2dafa'
 canvas.ctx.fillRect(0,0,canvas.w,canvas.h/2)
 canvas.ctx.closePath()
 

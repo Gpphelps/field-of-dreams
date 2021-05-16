@@ -21,6 +21,9 @@ router.get('/', async (req, res) => {
             include: [
                 { model: Flower },
             ],
+            order: [
+                ['flower_position_y', 'DESC']
+            ]
         });
 
         const allPlantedFlowers = allPlantedFlowersDB.map((flower) => flower.get({ plain: true }))
