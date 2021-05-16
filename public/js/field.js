@@ -98,6 +98,8 @@ const drawFlowers = (flowers) => {
         let flowerX = flower.flower_position_x;
         let flowerY = flower.flower_position_y;
 
+        let yDePropped = flowerY*canvas.h;
+
         let denormalized = denormalizeCoords(flowerX,flowerY);
 
         let f = flower.flower
@@ -132,7 +134,9 @@ const drawFlowers = (flowers) => {
         }
 
         let distScale = ((denormalized[1]-(canvas.h/2))/canvas.h)*2*40
-        let newFlower = new Flower(attr,distScale,denormalized[0],denormalized[1],canvas.ctx);
+        // let newFlower = new Flower(attr,distScale,denormalized[0],denormalized[1],canvas.ctx);
+        let newFlower = new Flower(attr,distScale,denormalized[0],yDePropped,canvas.ctx);
+
         // console.log(newFlower)
         newFlower.init()
         newFlower.draw()
@@ -180,6 +184,8 @@ const plantNewFlower = (e) => {
         let placeX = e.clientX + canvRect.left;
         let placeY = e.clientY - canvRect.top;
 
+        let proportionalY = placeY/canvRect.height;
+
         let normalized = normalizeCoords(placeX,placeY)
 
         let distScale = ((placeY-(canvas.h/2))/canvas.h)*2*40
@@ -191,7 +197,8 @@ const plantNewFlower = (e) => {
     
         let plantedFlowerModelCompatible = {
             flower_position_x: normalized[0],
-            flower_position_y: normalized[1],
+            // flower_position_y: normalized[1],
+            flower_position_y: proportionalY,
             flower_id: selectedAttr.id,
         }
     
