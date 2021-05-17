@@ -56,7 +56,7 @@ const renderProfileFlowers = (flowers) => {
             petalScaleVariation: f.petal_scale_variation,
         }
 
-        let newFlower = new Flower(attr,10,canvas.w/2,canvas.h*.9,canvas.ctx)
+        let newFlower = new Flower(attr,12,canvas.w/2,canvas.h*.9,canvas.ctx)
         newFlower.init()
         newFlower.draw()
 
