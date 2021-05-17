@@ -9,7 +9,7 @@ const profileInit = () => {
     })
     .then((response) => response.json())
     .then((data) => {
-        renderProfileFlowers(data.flower)
+        // renderProfileFlowers(data.flower)
     })
 }
 
@@ -75,57 +75,6 @@ const renderProfileFlowers = (flowers) => {
         document.querySelector('#profileDiv').appendChild(div)
     })
 }
-
-
-renderProfileFlowers([{
-    max_curve: 0.04,
-    max_variation: 0.05,
-    stem_width: 0.2,
-    bulb_radius: 0.3,
-    bulb_color_R: 255,
-    bulb_color_G: 255,
-    bulb_color_B: 0,
-    petal_color_R: 220,
-    petal_color_G: 0,
-    petal_color_B: 100,
-    stem_color_R: 0,
-    stem_color_G: 100,
-    stem_color_B: 0,
-    petal_color_variation: 125,
-    segments: 5,
-    segment_variation: 0,
-    petal_number: 10,
-    petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
-    petal_scale: 0.3,
-    petal_scale_variation: 0.05,
-    id:1,
-    name: 'My Flower'
-},{
-    max_curve: 0.04,
-    max_variation: 0.05,
-    stem_width: 0.2,
-    bulb_radius: 0.3,
-    bulb_color_R: 255,
-    bulb_color_G: 255,
-    bulb_color_B: 0,
-    petal_color_R: 220,
-    petal_color_G: 0,
-    petal_color_B: 100,
-    stem_color_R: 0,
-    stem_color_G: 100,
-    stem_color_B: 0,
-    petal_color_variation: 125,
-    segments: 5,
-    segment_variation: 0,
-    petal_number: 10,
-    petal_shape: '[[0,0],[2,1],[3,0],[2,-1]]',
-    petal_scale: 0.3,
-    petal_scale_variation: 0.05,
-    id:2,
-    name: 'My Flower'
-},])
-
-
 
 
 let deleteButtons = document.querySelectorAll('.profileFlowerDelete')
