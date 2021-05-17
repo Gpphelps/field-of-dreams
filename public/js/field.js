@@ -142,7 +142,7 @@ const drawFlowers = (flowers) => {
             let newDenormal = denormalizeCoords(flowerX,canvas.h)
             distScale = ((newDenormal[1]-(canvas.h/2))/canvas.h)*2*40
         }
-        let newFlower = new Flower(attr,distScale,denormalized[0],denormalized[1],canvas.ctx);
+        let newFlower = new Flower(attr,distScale,denormalized[0],Math.abs(denormalized[1]),canvas.ctx);
         // console.log(newFlower)
         newFlower.init()
         newFlower.draw()
