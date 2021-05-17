@@ -201,7 +201,8 @@ const plantNewFlower = (e) => {
     
         let plantedFlowerModelCompatible = {
             flower_position_x: normalized[0],
-            flower_position_y: normalized[1],
+            // flower_position_y: normalized[1],
+            flower_position_y: proportionalY,
             flower_id: selectedAttr.id,
         }
     
