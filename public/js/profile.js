@@ -19,7 +19,7 @@ const renderProfileFlowers = (flowers) => {
 
     flowers.forEach(flower => {
         console.log(flower)
-        let canv = document.querySelector(`#${flower.id}`)
+        let canv = document.querySelector(`#flowerCanv${flower.id}`)
         console.log(canv)
         let canvas = new Canvas(canv,75,75,'rgb(170,170,170)')
         canvas.init()
