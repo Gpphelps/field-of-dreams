@@ -18,9 +18,17 @@ const getFlowers = () => {
     .then((response)=> response.json())
     .then((data) => {
         console.log(data)
-        drawFlowers(data)
+
+        let unStringifed = data.map(flower => {
+            flower.flower_position_x = JSON.parse(flower.flower_position_x)
+            flower.flower_position_y = JSON.parse(flower.flower_position_y)
+        })
+        console.log(unStringifed)
+        drawFlowers(unStringifed)
     })
 }
+
+
 
 
 let loggedIn;
@@ -99,7 +107,7 @@ const drawFlowers = (flowers) => {
         let flowerY = flower.flower_position_y;
 
         let yDePropped = flowerY*canvas.h;
-
+        console.log(yDePropped)
         let denormalized = denormalizeCoords(flowerX,flowerY);
         console.log(denormalized)
 
