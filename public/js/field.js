@@ -189,11 +189,11 @@ const plantNewFlower = (e) => {
         let canvRect = canvas.canv.getBoundingClientRect()
         let placeX = e.clientX + canvRect.left;
         let placeY = e.clientY - canvRect.top;
-
+        console.log(placeX,placeY)
 
 
         let normalized = normalizeCoords(placeX,placeY)
-
+        console.log(normalized)
         let distScale = ((placeY-(canvas.h/2))/canvas.h)*2*(window.innerHeight/20)
         console.log(distScale)
         let newFlower = new Flower(selectedAttr,distScale,placeX,placeY,canvas.ctx)
