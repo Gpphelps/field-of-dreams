@@ -8,7 +8,7 @@ Field of Dreams is a website that allows users to plant flowers on a field share
 - Go to the [Field-of-Dreams GitHub Repository](https://github.com/Gpphelps/field-of-dreams)
 - Click **Code** and clone repository in gitbash/terminal using command: 
 ```sh
-git clone [https or ssh]
+git clone [https or ssh link here]
 ```
 - Initialize the application by navigating to the project folder on your local machine and running the command: 
 ```sh
@@ -23,7 +23,7 @@ npm start && npm run seed
 
 ## Usage 
 Below is a mockup of the homepage:
-![Field of dreams Homepage](images/homepage.png)
+![Field of dreams Homepage](images/homepage_demo.png)
 
 To use application and create your own flower, you must login or sign up. 
 
@@ -40,7 +40,7 @@ Once the user has created their own unique flower, they can save, name, and then
 
 ## Features
 
-This application uses user selected attributes to generate unique flowers. Below is an Attribute Reference that details each attribute and its definition.
+This application uses user selected attributes to generate unique flowers. Below is an Attribute Reference that details each attribute and its definition. This same reference of attributes can be found on the *About* page of the application, which can be reached by clicking the **?** in the navigation bar.
 
 ### *Max Curve*
 Max curve dictates the maximum amount of curve (which is the amount a flower will bend to one side) a flower will have and every flower generated from those attributes will have a curve that is a random amount between 0 and the maximum.
