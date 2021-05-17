@@ -54,14 +54,12 @@ const petalShapeInput = (e) => {
     let inputPos = petalCanvas.getBoundingClientRect()
     let relativeX = e.clientX - inputPos.left
     let relativeY = (e.clientY - inputPos.top)
-    console.log(relativeX,relativeY)
 
     let scaledX = relativeX/petalCanvas.width;
     let scaledY = -1*(relativeY/petalCanvas.height) + 0.5;
     
     scaledX = scaledX.toFixed(6)
     scaledY = scaledY.toFixed(6)
-    console.log(scaledX,scaledY)
 
     petalShape.push([scaledX,scaledY])
 
@@ -108,7 +106,6 @@ petalShapeRender()
 petalCanvas.addEventListener("mousedown",petalShapeInput)
 
 document.querySelector('#clearPetalCanvas').addEventListener("mousedown",function(){
-    console.log('clearing')
     petalShape = [[0,0]];
     ctx.clearRect(0,0,petalCanvas.width,petalCanvas.height)
     petalShapeRender()
@@ -125,11 +122,9 @@ document.querySelector('#regenButton').addEventListener("mousedown",function(){
 })
 
 const generateFlower = (attr) => {
-    console.log(attr)
     let flower = new Flower(attr,50,canvas.w/2,(canvas.h*0.8),canvas.ctx)
     flower.init()
     flower.draw()
-    console.log(flower)
 }
 
 const attrConstructor = () => {
@@ -158,7 +153,6 @@ const attrConstructor = () => {
     const petalScaleVariation = document.querySelector('#petalScaleVariation').value
 
     const name = document.querySelector('#flowerName').value
-    console.log(stemSegments)
 
     let attributes = {
         name: name,
@@ -190,7 +184,6 @@ const attrConstructor = () => {
         petalScale: Number(petalScale),
         petalScaleVariation: Number(petalScaleVariation),
     }
-    console.log(attributes.petalScale)
     generateFlower(attributes)
 
     return attributes
@@ -230,24 +223,18 @@ let rgbInputs = document.querySelectorAll('.rgbInput')
 rgbInputs.forEach(input => {
 
     document.querySelectorAll('.rgbColorDisplay').forEach(display => {
-        // console.log(display.dataset.type)
-        // console.log(input.dataset.type)
         
         if(display.dataset.type == input.dataset.type){
             let colors = document.querySelectorAll('.'+input.dataset.type+'Slider')
-            // console.log(colors[0].value)
             display.style.backgroundColor = `rgb(${colors[0].value},${colors[1].value},${colors[2].value})`
         }
     })
 
     input.addEventListener('mouseup',function(e){
         document.querySelectorAll('.rgbColorDisplay').forEach(display => {
-            // console.log(display.dataset.type)
-            // console.log(input.dataset.type)
             
             if(display.dataset.type == input.dataset.type){
                 let colors = document.querySelectorAll('.'+input.dataset.type+'Slider')
-                // console.log(colors[0].value)
                 display.style.backgroundColor = `rgb(${colors[0].value},${colors[1].value},${colors[2].value})`
             }
         })
@@ -290,7 +277,6 @@ const submitFlower = async () => {
 
     statusP.innerHTML = 'Saving Flower...'
     //NEED TO PUT IN THE ACTUAL ROUTE
-    console.log(attributeDBFormat)
     const response = await fetch('/api/flowers', {
         method: 'POST',
         body: JSON.stringify(attributeDBFormat),
