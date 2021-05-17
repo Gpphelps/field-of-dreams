@@ -9,22 +9,18 @@ const profileInit = () => {
     })
     .then((response) => response.json())
     .then((data) => {
-        // renderProfileFlowers(data.flower)
+        renderProfileFlowers(data.flower)
     })
 }
 
 
 const renderProfileFlowers = (flowers) => {
     flowers.forEach(flower => {
-        let div = document.createElement('div')
-        div.classList.add('profileFlowerDiv')
 
-
-        let canv = document.createElement('canvas')
+        let canv = document.querySelector(`#${flower.id}`)
         let canvas = new Canvas(canv,75,75,'rgb(170,170,170)')
         canvas.init()
 
-        div.appendChild(canv)
 
         let f = flower;
 
@@ -61,18 +57,6 @@ const renderProfileFlowers = (flowers) => {
         newFlower.init()
         newFlower.draw()
 
-        let title = document.createElement('h3')
-        div.appendChild(title)
-        title.innerHTML = flower.name
-
-        let deleteButton = document.createElement('button')
-        div.appendChild(deleteButton)
-        deleteButton.innerHTML = 'DELETE'
-        deleteButton.setAttribute("data-flowerid",flower.id)
-        deleteButton.classList.add('profileFlowerDelete')
-
-
-        document.querySelector('#profileDiv').appendChild(div)
     })
 }
 
@@ -88,7 +72,7 @@ deleteButtons.forEach(button => {
         })
         .then((response) => response.json())
         .then((data) => {
-            renderProfileFlowers(data)
+            console.log(data)
         })
     })
 })

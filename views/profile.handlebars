@@ -2,7 +2,7 @@
     <div id='profileDiv'>
         <h2>{{user.username}}'s Profile</h2>
         {{#each user.flowers as |flower|}}
-            <div class="profileFlowerDiv">
+            <div class="profileFlowerDiv" id="flowerCont{{flower.id}}"">
                 <canvas width="75" height="75" id={{flower.id}}></canvas>
                 <h3>{{flower.name}}</h3>
                 <button data-flowerid={{flower.id}} class="profileFlowerDelete">DELETE</button>
