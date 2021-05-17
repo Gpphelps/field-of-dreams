@@ -17,7 +17,6 @@ const getFlowers = () => {
     })
     .then((response)=> response.json())
     .then((data) => {
-        console.log(data)
         drawFlowers(data)
     })
 }
@@ -26,7 +25,6 @@ const getFlowers = () => {
 
 
 let loggedIn;
-console.log(document.querySelector('#login-proxy'))
 let proxyText = document.querySelector('#login-proxy').textContent
 if(proxyText == 'true'){
     loggedIn = true
@@ -34,8 +32,7 @@ if(proxyText == 'true'){
     loggedIn = false
 }
 
-console.log('LOGGED IN PROXY VALUE BELOW')
-console.log(loggedIn)
+
 
 // let testArray = [
 //     {
@@ -95,14 +92,13 @@ console.log(loggedIn)
 
 const drawFlowers = (flowers) => {
     flowers.forEach(flower => {
-        // console.log(flower)
-        // let pos = JSON.parse(flower.flower_position)
+    
         let flowerX = flower.flower_position_x;
         let flowerY = flower.flower_position_y;
-        console.log(flowerX,flowerY)
+        
 
         let denormalized = denormalizeCoords(flowerX,flowerY);
-        console.log(denormalized)
+        
 
         if(denormalized[1] <= canvas.h/2){
             return;
@@ -147,7 +143,7 @@ const drawFlowers = (flowers) => {
             distScale = ((newDenormal[1]-(canvas.h/2))/canvas.h)*2*(window.innerHeight/20)
         }
         let newFlower = new Flower(attr,distScale,denormalized[0],denormalized[1],canvas.ctx);
-        // console.log(newFlower)
+        
         newFlower.init()
         newFlower.draw()
     })
@@ -188,18 +184,18 @@ let selectedAttr = {
 
 const plantNewFlower = (e) => {
     if(loggedIn){
-        console.log(e.clientX);
+        
 
         let canvRect = canvas.canv.getBoundingClientRect()
         let placeX = e.clientX + canvRect.left;
         let placeY = e.clientY - canvRect.top;
-        console.log(placeX,placeY)
+        
 
 
         let normalized = normalizeCoords(placeX,placeY)
-        console.log(normalized)
+        
         let distScale = ((placeY-(canvas.h/2))/canvas.h)*2*(window.innerHeight/20)
-        console.log(distScale)
+        
         let newFlower = new Flower(selectedAttr,distScale,placeX,placeY,canvas.ctx)
 
         newFlower.init()
@@ -219,9 +215,6 @@ const plantNewFlower = (e) => {
             }
         })
         .then((response) => response.json())
-        .then((data) => {
-            console.log(data)
-        })
     }
 
 }
@@ -240,7 +233,6 @@ const myFlowersInit = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data)
             displayUserFlowers(data.flowers)
         })
     }
@@ -249,7 +241,6 @@ const myFlowersInit = () => {
 }
 
 const selectFlower = (e) => {
-    console.log(e.target.dataset.flowerid)
     let targetFlowerId = e.target.dataset.flowerid
 
     let allCanvs = document.querySelectorAll('.userFlowerCanv');
@@ -505,7 +496,6 @@ if(loggedIn){
 
 
 const fieldResize = (e) => {
-    console.log('resize')
     setTimeout(function(){
         location.reload()
     },500)
