@@ -88,12 +88,14 @@ class Flower{
                     let x = (part.points[i][0]*this.render.scale)+this.render.posX
                     let y = this.render.posY - (part.points[i][1]*this.render.scale)
 
-                    this.ctx.beginPath()
-                    this.ctx.fillStyle = `rgb(${this.attr.stemColor.r},${this.attr.stemColor.g},${this.attr.stemColor.b})`
-                    this.ctx.arc(x,y,((this.attr.stemWidth*this.render.scale))/2,0,2*Math.PI);
-                    this.ctx.fill();
-                    this.ctx.closePath()
-
+                    if(this.attr.stemWidth*this.render.scale > 0){
+                        this.ctx.beginPath()
+                        this.ctx.fillStyle = `rgb(${this.attr.stemColor.r},${this.attr.stemColor.g},${this.attr.stemColor.b})`
+                        this.ctx.arc(x,y,((this.attr.stemWidth*this.render.scale))/2,0,2*Math.PI);
+                        this.ctx.fill();
+                        this.ctx.closePath()
+                    }
+ 
                     let nextX = (part.points[i+1][0]*this.render.scale)+this.render.posX
                     let nextY = this.render.posY - (part.points[i+1][1]*this.render.scale)
 
@@ -107,14 +109,15 @@ class Flower{
                 }
 
             } else if (part.type == "bulb"){
-                let x = (part.point[0]*this.render.scale)+this.render.posX;
-                let y = this.render.posY - (part.point[1]*this.render.scale)
-                this.ctx.beginPath()
-                this.ctx.fillStyle = `rgb(${this.attr.bulbColor.r},${this.attr.bulbColor.g},${this.attr.bulbColor.b})`
-                this.ctx.arc(x,y,(part.radius*this.render.scale),0,2*Math.PI);
-                this.ctx.fill()
-                this.ctx.closePath()
-
+                if(part.radius*this.render.scale > 0){
+                    let x = (part.point[0]*this.render.scale)+this.render.posX;
+                    let y = this.render.posY - (part.point[1]*this.render.scale)
+                    this.ctx.beginPath()
+                    this.ctx.fillStyle = `rgb(${this.attr.bulbColor.r},${this.attr.bulbColor.g},${this.attr.bulbColor.b})`
+                    this.ctx.arc(x,y,(part.radius*this.render.scale),0,2*Math.PI);
+                    this.ctx.fill()
+                    this.ctx.closePath()
+                }
             } else if (part.type == "petal"){
                 this.ctx.beginPath()
                 this.ctx.moveTo(this.pToRenderX(part.points[0][0]),this.pToRenderY(part.points[0][1]))
