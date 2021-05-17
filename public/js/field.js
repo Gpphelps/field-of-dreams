@@ -135,7 +135,13 @@ const drawFlowers = (flowers) => {
             petalScaleVariation: f.petal_scale_variation,
         }
 
+
+
         let distScale = ((denormalized[1]-(canvas.h/2))/canvas.h)*2*40
+        if (flowerY > canvas.h){
+            let newDenormal = denormalizeCoords(flowerX,canvas.h)
+            distScale = ((newDenormal[1]-(canvas.h/2))/canvas.h)*2*40
+        }
         let newFlower = new Flower(attr,distScale,denormalized[0],denormalized[1],canvas.ctx);
         // console.log(newFlower)
         newFlower.init()
