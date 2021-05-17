@@ -46,7 +46,7 @@ const signupFormHandler = async (event) => {
       successIndicator.style.padding = '10px'
       successIndicator.style.borderRadius = '15px'
       successIndicator.textContent = 'Account Successfully created!'
-      document.querySelector('.formDiv').appendChild(successIndicator)
+      document.querySelector('.signup').appendChild(successIndicator)
       document.location.replace('/profile');
     } else {
       alert(response.statusText);
