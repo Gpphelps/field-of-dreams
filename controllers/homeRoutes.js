@@ -33,11 +33,9 @@ router.get('/profile', async (req, res) => {
         const user = userData.get({plain: true});
         console.log('user BELOW:')
         console.log(user)
-        console.log('...user BELOW:')
-        console.log(...user)
         // renders the user's profile page
         res.render('profile', {
-            ...user,
+            user,
             logged_in: true
         });
     } catch (err) {
