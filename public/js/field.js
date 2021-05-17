@@ -141,10 +141,10 @@ const drawFlowers = (flowers) => {
 
 
 
-        let distScale = ((flowerY-(canvas.h/2))/canvas.h)*2*40
+        let distScale = ((denormalized[1]-(canvas.h/2))/canvas.h)*2*40
         if (flowerY > canvas.h){
             let newDenormal = denormalizeCoords(flowerX,canvas.h)
-            distScale = ((flowerY-(canvas.h/2))/canvas.h)*2*40
+            distScale = ((newDenormal[1]-(canvas.h/2))/canvas.h)*2*40
         }
         let newFlower = new Flower(attr,distScale,denormalized[0],denormalized[1],canvas.ctx);
         // console.log(newFlower)
@@ -198,7 +198,7 @@ const plantNewFlower = (e) => {
 
         let normalized = normalizeCoords(placeX,placeY)
         console.log(normalized)
-        let distScale = ((placeY-(canvas.h/2))/canvas.h)*2*(window.innerHeight/20)
+        let distScale = ((normalized[1]-(canvas.h/2))/canvas.h)*2*(window.innerHeight/20)
         console.log(distScale)
         let newFlower = new Flower(selectedAttr,distScale,placeX,placeY,canvas.ctx)
 
