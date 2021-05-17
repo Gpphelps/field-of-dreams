@@ -668,6 +668,7 @@ body {
 
 #attrRef > h1{
     font-family: Helvetica;
+    color: yellow;
 }
 
 #attrRef > table {
