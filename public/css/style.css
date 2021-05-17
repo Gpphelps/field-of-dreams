@@ -296,6 +296,8 @@ body {
 #petalCreatorCont {
     border: 2px yellow solid;
     color: yellow;
+    border-radius: 15px;
+    margin: 5px;
 }
 
 #petalCreatorCont > p {
@@ -324,6 +326,7 @@ body {
     background-color: rgb(22,16,22);
     color: rgb(255, 0, 200);
     width: 100%;
+    border-radius: 15px;
 }
 
 #petalCreatorDiv > button:hover {
@@ -690,7 +693,7 @@ th {
 
 /* MOBILE STUFF */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
     #creatorBody {
         flex-direction: column;
         height: 95vh;
