@@ -10,7 +10,7 @@ const profileInit = () => {
     .then((response) => response.json())
     .then((data) => {
         console.log(data)
-        renderProfileFlowers(data.flower)
+        renderProfileFlowers(data.flowers)
     })
 }
 
