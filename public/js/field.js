@@ -19,12 +19,6 @@ const getFlowers = () => {
     .then((data) => {
         console.log(data)
 
-        let unStringifed = data.map(flower => {
-            flower.flower_position_x = JSON.parse(flower.flower_position_x)
-            flower.flower_position_y = JSON.parse(flower.flower_position_y)
-        })
-        console.log(unStringifed)
-        drawFlowers(unStringifed)
     })
 }
 
@@ -106,8 +100,7 @@ const drawFlowers = (flowers) => {
         let flowerX = flower.flower_position_x;
         let flowerY = flower.flower_position_y;
 
-        let yDePropped = flowerY*canvas.h;
-        console.log(yDePropped)
+
         let denormalized = denormalizeCoords(flowerX,flowerY);
         console.log(denormalized)
 
@@ -143,9 +136,7 @@ const drawFlowers = (flowers) => {
         }
 
         let distScale = ((denormalized[1]-(canvas.h/2))/canvas.h)*2*40
-        // let newFlower = new Flower(attr,distScale,denormalized[0],denormalized[1],canvas.ctx);
-        let newFlower = new Flower(attr,distScale,denormalized[0],yDePropped,canvas.ctx);
-
+        let newFlower = new Flower(attr,distScale,denormalized[0],denormalized[1],canvas.ctx);
         // console.log(newFlower)
         newFlower.init()
         newFlower.draw()
@@ -197,9 +188,6 @@ const plantNewFlower = (e) => {
 
         let normalized = normalizeCoords(placeX,placeY)
 
-        let proportionalY = normalized[1]/canvRect.height;
-        console.log(proportionalY)
-
         let distScale = ((placeY-(canvas.h/2))/canvas.h)*2*40
         console.log(distScale)
         let newFlower = new Flower(selectedAttr,distScale,placeX,placeY,canvas.ctx)
@@ -209,8 +197,7 @@ const plantNewFlower = (e) => {
     
         let plantedFlowerModelCompatible = {
             flower_position_x: normalized[0],
-            // flower_position_y: normalized[1],
-            flower_position_y: proportionalY,
+            flower_position_y: normalized[1],
             flower_id: selectedAttr.id,
         }
     
