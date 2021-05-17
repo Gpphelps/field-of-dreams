@@ -642,8 +642,16 @@ body {
 
 /*ABOUT PAGE STYLES*/
 
+#aboutCont {
+    width: 100vw;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .aboutPage {
-    /* color: yellow; */
+    color: yellow;
     max-width: 768px;
     margin: 20px;
 }
@@ -655,6 +663,7 @@ body {
 #attrRef {
     max-width: 768px;
     width: 100%;
+    margin: 20px;
 }
 
 #attrRef > h1{
