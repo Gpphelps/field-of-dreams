@@ -64,9 +64,12 @@ const renderProfileFlowers = (flowers) => {
 }
 
 
-let deleteButtons = document.querySelectorAll('.profileFlowerDelete')
+let deleteButtons = document.querySelectorAll('.profileFlowerDelete');
+let divToBeDeleted;
+
 deleteButtons.forEach(button => {
     button.addEventListener('mousedown',function(e){
+        divToBeDeleted = document.querySelector(`#flowerCont${e.target.dataset.flowerid}`)
         fetch(`api/flowers/${e.target.dataset.flowerid}`, {
             method: 'DELETE',
             headers: {
@@ -75,6 +78,7 @@ deleteButtons.forEach(button => {
         })
         .then((response) => response.json())
         .then((data) => {
+            divToBeDeleted.remove()
             console.log(data)
         })
     })
