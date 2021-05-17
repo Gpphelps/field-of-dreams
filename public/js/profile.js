@@ -9,7 +9,6 @@ const profileInit = () => {
     })
     .then((response) => response.json())
     .then((data) => {
-        console.log(data)
         renderProfileFlowers(data.flowers)
     })
 }
@@ -18,9 +17,7 @@ const profileInit = () => {
 const renderProfileFlowers = (flowers) => {
 
     flowers.forEach(flower => {
-        console.log(flower)
         let canv = document.querySelector(`#flowerCanv${flower.id}`)
-        console.log(canv)
         let canvas = new Canvas(canv,75,75,'rgb(170,170,170)')
         canvas.init()
 
@@ -79,7 +76,6 @@ deleteButtons.forEach(button => {
         .then((response) => response.json())
         .then((data) => {
             divToBeDeleted.remove()
-            console.log(data)
         })
     })
 })
