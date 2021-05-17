@@ -185,10 +185,12 @@ const plantNewFlower = (e) => {
         let placeX = e.clientX + canvRect.left;
         let placeY = e.clientY - canvRect.top;
 
-        let proportionalY = placeY/canvRect.height;
-        console.log(proportionalY)
+
 
         let normalized = normalizeCoords(placeX,placeY)
+
+        let proportionalY = normalized[1]/canvRect.height;
+        console.log(proportionalY)
 
         let distScale = ((placeY-(canvas.h/2))/canvas.h)*2*40
         console.log(distScale)
@@ -199,8 +201,7 @@ const plantNewFlower = (e) => {
     
         let plantedFlowerModelCompatible = {
             flower_position_x: normalized[0],
-            // flower_position_y: normalized[1],
-            flower_position_y: proportionalY,
+            flower_position_y: normalized[1],
             flower_id: selectedAttr.id,
         }
     

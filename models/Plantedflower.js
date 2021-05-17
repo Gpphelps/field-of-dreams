@@ -12,11 +12,11 @@ Plantedflower.init(
             autoIncrement: true,
         },
         flower_position_x: { 
-          type: DataTypes.INTEGER,
+          type: DataTypes.STRING,
           allowNull: false,
         },
         flower_position_y: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         flower_id: {
