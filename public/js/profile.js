@@ -9,15 +9,18 @@ const profileInit = () => {
     })
     .then((response) => response.json())
     .then((data) => {
+        console.log(data)
         renderProfileFlowers(data.flower)
     })
 }
 
 
 const renderProfileFlowers = (flowers) => {
-    flowers.forEach(flower => {
 
+    flowers.forEach(flower => {
+        console.log(flower)
         let canv = document.querySelector(`#${flower.id}`)
+        console.log(canv)
         let canvas = new Canvas(canv,75,75,'rgb(170,170,170)')
         canvas.init()
 
