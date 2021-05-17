@@ -23,6 +23,8 @@ const getFlowers = () => {
 }
 
 
+
+
 let loggedIn;
 console.log(document.querySelector('#login-proxy'))
 let proxyText = document.querySelector('#login-proxy').textContent
@@ -98,7 +100,9 @@ const drawFlowers = (flowers) => {
         let flowerX = flower.flower_position_x;
         let flowerY = flower.flower_position_y;
 
+
         let denormalized = denormalizeCoords(flowerX,flowerY);
+        console.log(denormalized)
 
         let f = flower.flower
 
@@ -179,6 +183,8 @@ const plantNewFlower = (e) => {
         let canvRect = canvas.canv.getBoundingClientRect()
         let placeX = e.clientX + canvRect.left;
         let placeY = e.clientY - canvRect.top;
+
+
 
         let normalized = normalizeCoords(placeX,placeY)
 
