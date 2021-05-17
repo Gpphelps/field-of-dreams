@@ -79,3 +79,5 @@ deleteButtons.forEach(button => {
         })
     })
 })
+
+profileInit()
