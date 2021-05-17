@@ -19,7 +19,7 @@
       <div id='headerNavOptions'>
         {{#if logged_in}}
           <a id='logout'>Logout</a>
-          <a id='profileButton' href='/profile-page'>Profile</a>
+          <a id='profileButton' href='/profile'>Profile</a>
           <a id='newFlowerButton' href='/create'>Make New Flower</a>
           {{else}}
           <a id='login' href='/login'>Login</a>
@@ -33,24 +33,6 @@
 
 </body>
 
-<script src="./js/login.js"></script>
+
 <script src="./js/logout.js"></script>
-{{!-- <script>
-  //lol I know you aren't supposed to do in-doc js but I was lazy and didn't wanna make a whole new file to link everywhere
-  document.querySelector('#newFlowerButton').addEventListener('mousedown',function(){
-    window.location.href = "/create"
-  })
-
-  document.querySelector('#profileButton').addEventListener('mousedown',function(){
-    window.location.href = "/profile"
-  })
-
-  document.querySelector('#login').addEventListener('mousedown',function(){
-    window.location.href = "/login"
-  })
-
-  document.querySelector('#maintitle').addEventListener('mousedown',function(){
-    window.location.href = "/"
-  })
-  </script> --}}
 </html>

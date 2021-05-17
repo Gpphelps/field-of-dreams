@@ -2,6 +2,11 @@
 let canvas = new Canvas(document.querySelector('#mainField'),window.innerWidth,window.innerHeight-(document.querySelector('header').offsetHeight),'green')
 canvas.init()
 
+canvas.ctx.beginPath()
+canvas.ctx.fillStyle = '#a2dafa'
+canvas.ctx.fillRect(0,0,canvas.w,canvas.h/2)
+canvas.ctx.closePath()
+
 const getFlowers = () => {
     //NEED TO PUT IN THE ACTUAL ROUTE
     fetch('/api/plantedRoutes/', {
@@ -16,6 +21,8 @@ const getFlowers = () => {
         drawFlowers(data)
     })
 }
+
+
 
 
 let loggedIn;
@@ -92,8 +99,14 @@ const drawFlowers = (flowers) => {
         // let pos = JSON.parse(flower.flower_position)
         let flowerX = flower.flower_position_x;
         let flowerY = flower.flower_position_y;
+        console.log(flowerX,flowerY)
 
         let denormalized = denormalizeCoords(flowerX,flowerY);
+        console.log(denormalized)
+
+        if(denormalized[1] <= canvas.h/2){
+            return;
+        }
 
         let f = flower.flower
 
@@ -126,7 +139,14 @@ const drawFlowers = (flowers) => {
             petalScaleVariation: f.petal_scale_variation,
         }
 
-        let newFlower = new Flower(attr,20,denormalized[0],denormalized[1],canvas.ctx);
+
+
+        let distScale = ((denormalized[1]-(canvas.h/2))/canvas.h)*2*(window.innerHeight/20)
+        if (flowerY > canvas.h){
+            let newDenormal = denormalizeCoords(flowerX,canvas.h)
+            distScale = ((newDenormal[1]-(canvas.h/2))/canvas.h)*2*(window.innerHeight/20)
+        }
+        let newFlower = new Flower(attr,distScale,denormalized[0],denormalized[1],canvas.ctx);
         // console.log(newFlower)
         newFlower.init()
         newFlower.draw()
@@ -173,10 +193,14 @@ const plantNewFlower = (e) => {
         let canvRect = canvas.canv.getBoundingClientRect()
         let placeX = e.clientX + canvRect.left;
         let placeY = e.clientY - canvRect.top;
+        console.log(placeX,placeY)
+
 
         let normalized = normalizeCoords(placeX,placeY)
-
-        let newFlower = new Flower(selectedAttr,20,placeX,placeY,canvas.ctx)
+        console.log(normalized)
+        let distScale = ((placeY-(canvas.h/2))/canvas.h)*2*(window.innerHeight/20)
+        console.log(distScale)
+        let newFlower = new Flower(selectedAttr,distScale,placeX,placeY,canvas.ctx)
 
         newFlower.init()
         newFlower.draw()

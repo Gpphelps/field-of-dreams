@@ -61,16 +61,16 @@ router.get('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        const newFlower = await Flower.findAll({
+        const flowerData = await Flower.destroy({
             where: {
                 id: req.params.id,
-            }
+            },
         });
-        if (!newFlower) {
+        if (!flowerData) {
             res.status(404).json({ message: 'No flower found with this id!' });
             return;
         }
-        res.status(200).json(newFlower);
+        res.status(200).json(flowerData);
     } catch (err) {
         res.status(500).json(err);
     }

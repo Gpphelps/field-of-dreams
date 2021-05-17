@@ -1,6 +1,13 @@
 <div id='profileContainer'>
     <div id='profileDiv'>
         <h2>{{user.username}}'s Profile</h2>
+        {{#each user.flowers as |flower|}}
+            <div class="profileFlowerDiv" id="flowerCont{{flower.id}}">
+                <canvas width="75" height="75" id=flowerCanv{{flower.id}}></canvas>
+                <h3>{{flower.name}}</h3>
+                <button data-flowerid={{flower.id}} class="profileFlowerDelete">DELETE</button>
+            </div>
+        {{/each}}
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.3.0/math.js"></script>

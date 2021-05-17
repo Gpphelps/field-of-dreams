@@ -58,6 +58,9 @@ const petalShapeInput = (e) => {
 
     let scaledX = relativeX/petalCanvas.width;
     let scaledY = -1*(relativeY/petalCanvas.height) + 0.5;
+    
+    scaledX = scaledX.toFixed(6)
+    scaledY = scaledY.toFixed(6)
     console.log(scaledX,scaledY)
 
     petalShape.push([scaledX,scaledY])

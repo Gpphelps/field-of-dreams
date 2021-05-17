@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 });
 
 
-router.get('/profile-page', async (req, res) => {
+router.get('/profile', async (req, res) => {
     try {
         // Finds the logged in user's profile based on their session ID
         const userData = await User.findByPk(req.session.user_id, {
@@ -31,9 +31,12 @@ router.get('/profile-page', async (req, res) => {
         });
 
         const user = userData.get({plain: true});
+        console.log('user BELOW:')
+        console.log(user)
+        
         // renders the user's profile page
         res.render('profile', {
-            ...user,
+            user,
             logged_in: true
         });
     } catch (err) {

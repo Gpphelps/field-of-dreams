@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const {Plantedflower, Flower} = require('../../models');
+const { Op } = require("sequelize");
 
 router.post('/', async (req, res) => {
+    increaseAllY()
     try {
        const newPlant =  await Plantedflower.create({
            flower_position_x: req.body.flower_position_x,
@@ -15,12 +17,26 @@ router.post('/', async (req, res) => {
     }
 });
 
+const increaseAllY = () => {
+    Plantedflower.increment(
+        { flower_position_y: -2 },
+        { where: {
+            id: {
+                [Op.gte]: 0,
+            }
+        }}
+    );
+}
+
 router.get('/', async (req, res) => {
     try {
         const allPlantedFlowersDB = await Plantedflower.findAll({
             include: [
                 { model: Flower },
             ],
+            order: [
+                ['flower_position_y', 'ASC']
+            ]
         });
 
         const allPlantedFlowers = allPlantedFlowersDB.map((flower) => flower.get({ plain: true }))

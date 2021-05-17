@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
 
         req.session.save(() => {
             req.session.loggedIn = true;
-            req.session.user_id = userDataDB.id.
+            req.session.user_id = userDataDB.id;
             res.status(200).json(userDataDB);
         });
     } catch (err) {
