@@ -1,7 +1,7 @@
 # Field of Dreams
 
 ## Description
-Field of Dreams is a website that allows users to plant flowers on a field shared by all users of the website. Users can create flowers in the flower creator which uses a rendering engine that takes in a set of attributes users can set which dictate how the flowers are generated. Through this technique users can customize the shape of petals, color of the stem, the length of the stem and more in order to generate a wide range of flowers.
+Field of Dreams is a website that allows users to plant flowers on a field shared by all users of the website. Users can create flowers in the flower creator which uses a rendering engine that takes in a series of attributes users can set which dictate how the flowers are generated. Through this technique users can customize the shape of petals, color of the stem, the length of the stem and more in order to generate a wide range of flowers.
 
 ## Installation
 ### To install codebase on local machine: 
